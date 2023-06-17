@@ -17,3 +17,9 @@ run-time error R6901
 Initialially I installed Windows 3.x and ran with enhanced mode `WIN /3` but was unsucessful. HXRT216 seems to work just fine, so add it to your `AUTOEXEC.BAT` (or environment script): `HXRT216\BIN\HDPMI32.EXE`.  
 
 The target we are interested in compiling is `f14.exe` under `src`.
+
+### Changelog
+There are various issues with building the source as it stands, some of which are fixed. The first issue was that various C files required headers, and only some C files referenced `INCDIR`. I've simply added `-I$(INCDIR)` to the `CFLAGS` in the `MAKEFILE`. Another issue was that it appeared `PASM.ASM` was using reserved keywords for procedure argument names (namely `ADDR`); I've simply renamed these.   
+
+### Current Issues
+The biggest blocker right now is `3dmatrix.asm` fails on the linking stage because it requires definitions for various math `EXTERN`s. I see that the `MAKEFILE` references a `..\lib\mpslibm.lib`, which would presumably have these missing symbol definitions such as `_SinHead`, `_CosPitch`, etc. This static library is not a target in the `MAKEFILE` and does not appear to be included, so this may require people going on a difficult scavenger hunt to find it.
