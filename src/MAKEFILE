@@ -1,91 +1,91 @@
 INCDIR=..\h
-CFLAGS=/FPa /G2 /AM /Osegcl /nologo /c
+CFLAGS=/FPa /G2 /AM /Osegcl /nologo /c -I$(INCDIR)
 #LFLAGS=/MAP /SEG:256 /ST:3500 /F /PACKC
 LFLAGS=/MAP /SEG:256 /ST:3500
 AFLAGS=/n
 OBJS = \
-	monoprin.obj \
-	adicrt.obj \
-	npolys.obj \
-	n3d.obj \
-	emsload.obj \
-	pasm.obj \
-	emm.obj \
-	nqfly.obj \
-#	3d.obj \
-	3dexcept.obj \
-	3dloadt.obj  \
-	3dloader.obj \
-	3dmatrix.obj \
-	3dobject.obj \
-	3dplanes.obj \
-	3dscene.obj  \
-	aaa.obj      \
-	aaahit.obj   \
-	armt.obj     \
-	awacs.obj    \
-	awg9.obj     \
-	billasm.obj  \
-	boats.obj    \
-	bullets.obj  \
-	carr.obj     \
-	carrai.obj   \
-#	clip.obj     \
-	cmds.obj     \
-	cockpit.obj  \
-	ctrlvect.obj \
-	ddd.obj	     \
-	egraph.obj   \
-	ems.obj      \
-	flight2.obj  \
-	flir.obj     \
-	fltmath.obj  \
-	gmain.obj    \
-	nhorz.obj     \
-	horzasm.obj  \
-	hud2.obj     \
-	hsd.obj	     \
-	joystx.obj   \
-	njoycal.obj   \
-	keyjoy.obj   \
-	libglue.obj  \
-#	loadfile.obj \
-	loadmiss.obj \
-	map.obj	     \
-	math.obj     \
-	mcga.obj     \
-	mcgamask.obj \
- 	nmenus.obj   \
-	message.obj  \
-	options.obj  \
-	ovl.obj      \
-	planes.obj   \
-	planes2.obj  \
-	planes3.obj  \
-	radars.obj   \
-	rastport.obj \
-	riohead.obj  \
-	riomap.obj   \
-	sams.obj     \
-	savemode.obj \
-	sound.obj    \
-	sprites.obj  \
-	stealth.obj  \
-	support.obj  \
-	tac.obj      \
-	tews.obj     \
-	tgtflir.obj  \
-	tid.obj	     \
-	trig.obj     \
-	track.obj    \
-	views.obj    \
-	vdi.obj	     \
-	world.obj
+   monoprin.obj \
+   adicrt.obj \
+   npolys.obj \
+   n3d.obj \
+   emsload.obj \
+   pasm.obj \
+   emm.obj \
+   nqfly.obj \
+#  3d.obj \
+   3dexcept.obj \
+   3dloadt.obj  \
+   3dloader.obj \
+   3dmatrix.obj \
+   3dobject.obj \
+   3dplanes.obj \
+   3dscene.obj  \
+   aaa.obj      \
+   aaahit.obj   \
+   armt.obj     \
+   awacs.obj    \
+   awg9.obj     \
+   billasm.obj  \
+   boats.obj    \
+   bullets.obj  \
+   carr.obj     \
+   carrai.obj   \
+#  clip.obj     \
+   cmds.obj     \
+   cockpit.obj  \
+   ctrlvect.obj \
+   ddd.obj       \
+   egraph.obj   \
+   ems.obj      \
+   flight2.obj  \
+   flir.obj     \
+   fltmath.obj  \
+   gmain.obj    \
+   nhorz.obj     \
+   horzasm.obj  \
+   hud2.obj     \
+   hsd.obj       \
+   joystx.obj   \
+   njoycal.obj   \
+   keyjoy.obj   \
+   libglue.obj  \
+#  loadfile.obj \
+   loadmiss.obj \
+   map.obj       \
+   math.obj     \
+   mcga.obj     \
+   mcgamask.obj \
+   nmenus.obj   \
+   message.obj  \
+   options.obj  \
+   ovl.obj      \
+   planes.obj   \
+   planes2.obj  \
+   planes3.obj  \
+   radars.obj   \
+   rastport.obj \
+   riohead.obj  \
+   riomap.obj   \
+   sams.obj     \
+   savemode.obj \
+   sound.obj    \
+   sprites.obj  \
+   stealth.obj  \
+   support.obj  \
+   tac.obj      \
+   tews.obj     \
+   tgtflir.obj  \
+   tid.obj       \
+   trig.obj     \
+   track.obj    \
+   views.obj    \
+   vdi.obj       \
+   world.obj
 
 all: f14.exe
 
 f14.exe: $(OBJS)
-	link $(LFLAGS) @<<f14.lrf
+   link $(LFLAGS) @<<f14.lrf
 $(OBJS: =+^
 )
 f14.exe

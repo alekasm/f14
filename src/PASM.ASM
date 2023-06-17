@@ -2628,7 +2628,7 @@ endif
 
 .8086
 
-NScaleLine	PROC	USES si di bx ds es,SRCSEG:WORD,BASE:WORD,ADDR:WORD,X:WORD,Y:WORD,W:WORD,DEST:WORD
+NScaleLine	PROC	USES si di bx ds es,SRCSEG:WORD,BASE:WORD,ADDR2:WORD,X:WORD,Y:WORD,W:WORD,DEST:WORD
 
 	mov	ds,SRCSEG
 	mov	si,BASE
@@ -2650,7 +2650,7 @@ NScaleLine	PROC	USES si di bx ds es,SRCSEG:WORD,BASE:WORD,ADDR:WORD,X:WORD,Y:WOR
 	add	di,X
 
 	mov	cx,W
-	mov	bp,ADDR
+	mov	bp,ADDR2
 	shr	cx,1
 	shr	cx,1
 
@@ -2688,7 +2688,7 @@ NScaleLine	PROC	USES si di bx ds es,SRCSEG:WORD,BASE:WORD,ADDR:WORD,X:WORD,Y:WOR
 	ret
 NScaleLine	ENDP
 
-NScaleLine2	PROC	USES si di bx ds es,SRCSEG:WORD,BASE:WORD,ADDR:WORD,X:WORD,Y:WORD,W:WORD,DEST:WORD
+NScaleLine2	PROC	USES si di bx ds es,SRCSEG:WORD,BASE:WORD,ADDR2:WORD,X:WORD,Y:WORD,W:WORD,DEST:WORD
 
 	mov	ds,SRCSEG
 	mov	si,BASE
@@ -2710,7 +2710,7 @@ NScaleLine2	PROC	USES si di bx ds es,SRCSEG:WORD,BASE:WORD,ADDR:WORD,X:WORD,Y:WO
 	add	di,X
 
 	mov	cx,W
-	mov	bp,ADDR
+	mov	bp,ADDR2
 	shr	cx,1
 	shr	cx,1
 
@@ -2756,12 +2756,12 @@ NScaleLine2	ENDP
 LCNT	dw	1
 
 
-NCloudLine	PROC	USES bp si di bx ds es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR:WORD,DST:WORD,GREY:WORD,WID:WORD
+NCloudLine	PROC	USES bp si di bx ds es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR2:WORD,DST:WORD,GREY:WORD,WID:WORD
 
 
 
 	mov	ds,SRCSEG
-	mov	di,ADDR
+	mov	di,ADDR2
 	mov	ax,DST
 	mov	es,ax
 
@@ -2830,12 +2830,12 @@ L1:
 
 NCloudLine	ENDP
 
-NCloudLine2	PROC	USES bp si di bx ds es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR:WORD,DST:WORD,GREY:WORD,WID:WORD
+NCloudLine2	PROC	USES bp si di bx ds es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR2:WORD,DST:WORD,GREY:WORD,WID:WORD
 
 
 
 	mov	ds,SRCSEG
-	mov	di,ADDR
+	mov	di,ADDR2
 	mov	ax,DST
 	mov	es,ax
 
@@ -2911,12 +2911,12 @@ L1:
 
 NCloudLine2	ENDP
 
-NCloudLine3	PROC	USES bp si di bx ds es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR:WORD,DST:WORD,GREY:WORD,WID:WORD
+NCloudLine3	PROC	USES bp si di bx ds es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR2:WORD,DST:WORD,GREY:WORD,WID:WORD
 
 
 
 	mov	ds,SRCSEG
-	mov	di,ADDR
+	mov	di,ADDR2
 	mov	ax,DST
 	mov	es,ax
 
@@ -3008,7 +3008,7 @@ NXSLine	PROC	USES	bx cx, A:DWORD,E:WORD,LN:WORD,HT:WORD,M:WORD
 NXSLine	ENDP
 
 
-NXSADDLine	PROC	uses bx cx, C:WORD,HT:WORD,M:WORD
+NXSADDLine	PROC	uses bx cx, C_2:WORD,HT:WORD,M:WORD
 
 .386
 	mov	ax,M
@@ -3017,7 +3017,7 @@ NXSADDLine	PROC	uses bx cx, C:WORD,HT:WORD,M:WORD
 	mov	ax,HT
 	cwde
 	mov	ebx,eax
-	mov	ax,C
+	mov	ax,C_2
 	cwde
 	imul	ebx
 	idiv	ecx
@@ -3034,11 +3034,11 @@ NXSADDLine	ENDP
 
 
 
-NCloudFillLine2	PROC	USES bp si di bx ds es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR:WORD,DST:WORD,GREY:WORD,WID:WORD
+NCloudFillLine2	PROC	USES bp si di bx ds es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR_2:WORD,DST:WORD,GREY:WORD,WID:WORD
 
 
 
-	mov	di,ADDR
+	mov	di,ADDR_2
 	mov	ax,DST
 	mov	es,ax
 
@@ -3702,12 +3702,12 @@ BuildPolyList   ENDP
 
 .386
 
-MyWaterline	PROC	USES bp si di bx fs es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR:WORD,DST:WORD,GREY:WORD,WID:WORD
+MyWaterline	PROC	USES bp si di bx fs es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR_2:WORD,DST:WORD,GREY:WORD,WID:WORD
 
         push    bp
 
 	mov	fs,SRCSEG
-	mov	di,ADDR
+	mov	di,ADDR_2
 	mov	ax,DST
 	mov	es,ax
 
@@ -3848,12 +3848,12 @@ MyWaterline	ENDP
 .8086
 
 .386
-MyWaterline2	PROC	USES bp si di bx fs es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR:WORD,DST:WORD,GREY:WORD,WID:WORD
+MyWaterline2	PROC	USES bp si di bx fs es,XS:WORD,ZS:WORD,XADD:WORD,ZADD:WORD,SRCSEG:WORD,ADDR_2:WORD,DST:WORD,GREY:WORD,WID:WORD
 
         push    bp
 
 	mov	fs,SRCSEG
-	mov	di,ADDR
+	mov	di,ADDR_2
 	mov	ax,DST
 	mov	es,ax
 
