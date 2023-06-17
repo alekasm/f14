@@ -14,7 +14,11 @@ run-time error R6901
  - a DOS session under Windows 3.x in enhanced mode  
  - Qualitas 386MAX or BlueMAX version 6.x  
 ```  
-Initialially I installed Windows 3.x and ran with enhanced mode `WIN /3` but was unsucessful. HXRT216 seems to work just fine, so add it to your `AUTOEXEC.BAT` (or environment script): `HXRT216\BIN\HDPMI32.EXE`.  
+Initialially I installed Windows 3.x and ran with enhanced mode `WIN /3` but was unsucessful. HXRT216 seems to work just fine, so add it to your `AUTOEXEC.BAT` (or environment script): `HXRT216\BIN\HDPMI32.EXE`.  An issue with running this DPMI is an error message during compilation which states the following:  
+```
+Phar Lap fatal err 10049: Ran out of stack buffers
+```
+In my environment script (or `AUTOEXEC.BAT`) you can try adding `set GOTNT=-NOPAGE` prior to executing `HDPMI32.EXE`. This helps a little bit (I think), but it has required me to still reboot and continue attempts to recompile further.
 
 The target we are interested in compiling is `f14.exe` under `src`.
 
