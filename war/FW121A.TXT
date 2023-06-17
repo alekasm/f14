@@ -1,0 +1,322 @@
+;
+; FIGHTING WITHDRAWAL #1 Box 21a Strategic Strike
+;
+
+[DESCRIPTION]
+B-52Strike
+
+[WORLD]
+NorthCape
+
+[TIME]
+07:30
+
+[WEATHER]
+Overcast
+
+[CEILING]
+25000
+
+[LOADOUT]
+mc_alpha
+
+[BRIEFING]
+STRATEGIC STRIKE: Fantastic work! Because the Soviet fighters were successfully intercepted,
+our "Hawkeye" has been spared. The personal heroism you have exhibited will be duly noted
+in your service records. You have therefore been hand-picked to escort a group of B-52s
+about to launch a strike against the Soviet surface vessels. This mission is a test case to study
+the feasibility of future such attacks. If successful, many more of these raids will be
+conducted. If unsuccessful, the operation will be immediately terminated. We cannot afford to
+lose these bombers.
+
+To win this mission you must: prevent FFFF or more B-52s from being shot down by enemy
+fighters
+
+[STATIONS]
+
+Station = Our_Carrier
+Station = Their_Carrier
+
+[PATHS]
+
+; U.S SURFACE SHIP PATHS
+
+Carrier_1       = (75,85 ) Speed = 30 Heading = 190
+
+CGa_1 	= ( 77,86 ) Speed = 30 Heading = 190
+              	( Carrier ) Form_On
+
+; SOVIET SURFACE SHIP PATHS
+
+SovCVHa_1 	= ( 195,65 ) Speed = 30 Heading = 270
+
+SovBCGa_1 	= ( 196,67 ) Speed = 30 Heading = 270
+                   	( Kiev ) Form_On
+
+;  U.S. AIRCRAFT PATHS
+
+Player 	= ( Carrier ) Elev = 1 Speed = 0 Launch
+		( Hawkeye )
+                	( Carrier) Land
+
+Hawkeye         = { 50,30 }:Carrier Elev = 25000 Speed = 225 AWACS
+
+FCAP_1  = { 0,75 }:Carrier  Elev = 15000 Speed = 400 Heading = 02 CAP
+
+FCAP_2  = { 75,0 }:Carrier  Elev = 15000 Speed = 400 Heading = 90 CAP
+
+FCAP_3  = { -75,0 }:Carrier  Elev = 15000 Speed = 400 Heading = 180 CAP
+
+FATK_1	= ( 10,90 ) Elev = 50000 Speed = 550 Form = Bomber_Formation
+		( 120,80 )
+		( Kiev ) attack
+		( 10, 90 )
+
+FATK_2	= ( 10,95 ) Elev = 50000 Speed = 550 Form = Bomber_Formation
+		( 124,81 )
+		( Kirov ) attack
+		( 15,90 )
+
+FATK_3	= ( 10,105 ) Elev = 50000 Speed = 550 Form = Bomber_Formation
+		( 120,70 )
+		( Soviet_Cruiser ) attack
+		( 10, 100 )
+
+FATK_4	= ( 10,115 ) Elev = 50000 Speed = 550 Form = Bomber_Formation
+		( 120,85 )
+		( Soviet_Cruiser ) attack
+		( 10, 115 )
+
+; Friendly Search and Rescue Helo on Carrier
+FSAR_1	= ( Carrier ) Elev = 1 Speed = 0 SAR
+
+; Friendly Ready 5 Fighters on Carrier
+READY_5	 = ( Carrier )  Elev = 1 Speed = 0
+
+;  SOVIET AIRCRAFT PATHS
+
+ESRCH_1 	= ( 50,25 ) Elev = 35000 Speed = 450 Heading = 270 AWACS
+
+esrch_2         = ( 110,40 ) Elev = 35000 Speed = 450 Heading = 270 AWACS
+
+ECAP_1  = { -10,15 }:Kiev Elev = 10000 Speed = 300 CAP
+
+ECAP_2	= ( 140,50 ) Elev = 10000 Speed = 500 CAP
+
+ECAP_3	= ( 140,85 ) Elev = 25000 Speed = 600 CAP
+
+ECAP_4	= ( 180,60 ) Elev = 30000 Speed = 600 CAP
+
+ECAP_5	= ( 190,100 Elev = 30000 Speed = 600
+                ( fbomber ) Elev = 35000
+
+EHELO_1 = { -10,20 }:Kiev Elev = 1000 Speed = 90
+
+EHELO_2 = { -30,-20 }:Kiev Elev = 1000 Speed = 90
+
+; MISSION STANDARD ENVIRONMENT ENTRIES
+
+; Bardufoss Fighter Cover
+NORCAP_1	= ( 155,125 ) Elev = 25000 Speed = 500 CAP
+
+; Andoya Fighter Cover
+NORCAP_2	= ( 125,145 ) Elev = 20000 Speed = 450 CAP
+
+; Southern Norway ASW mission
+FMSE_1	= ( 60,190 ) Elev = 3000 Speed = 350 Heading = 45
+
+; Soviet AWACS
+EMSE_1	= ( 210,85 ) Elev = 35000 Speed = 300 AWACS
+
+; Soviet LR ASW Mission
+EMSE_2	= ( 220,110 ) Elev = 3500 Speed = 350
+		( 185,75 )
+		( 65,165 )
+		(185,75 )
+
+; Soviet BaseCAP
+EMSE_3	= (225,125) Elev = 20000 Speed = 600 CAP
+
+; Finland Air Cover
+FINCAP	= ( 195,165 ) Elev = 25000 Speed = 500 CAP
+
+; Sweden Air Cover
+SWEDECAP	= ( 165,155 ) Elev = 20000 Speed = 550 CAP
+
+
+[OBJECTS]
+
+; U.S. CARRIER GROUP
+
+Nimitza                 PATH = Carrier_1
+                            	Name = Carrier
+                          	Side = Friendly
+			Station = Our_Carrier
+
+CGa                      	PATH = CGa_1
+			Name = Cruiser
+                            	Side = Friendly
+                                Number = 2, 2, 2, 2
+			Station = Our_Carrier
+
+DDGa                   	PATH = CGa_1
+			Name = Destroyer
+                            	Side = Friendly
+                                Number = 3, 3, 3, 3
+			Station = Our_Carrier
+
+; SOVIET CARRIER GROUP
+
+SovCVHa               	PATH = SovCVHa_1
+                              	Name = Kiev
+                              	Side = Enemy
+			Station = Their_Carrier
+
+SovBCGa                	PATH = SovBCGa_1
+                             	Name= Kirov
+                             	Side = Enemy
+			Station = Their_Carrier
+
+SovCGa                 	PATH = SovBCGa_1
+			Name = Soviet_Cruiser
+                              	Side = Enemy
+                                Number = 2, 2, 2, 2
+			Station = Their_Carrier
+
+SovDDGa                	PATH = SovBCGa_1
+			Name = Soviet_Destroyer
+                             	Side = Enemy
+                                Number = 2, 2, 2, 2
+			Station = Their_Carrier
+
+; U.S. AIRCRAFT
+
+F-14FDa                   	PATH = Player
+                            	Name = You
+                            	Type = Player
+                        Number = 1, 1, 1, 1
+			Station = Our_Carrier
+
+F-14FDa                   	PATH = Player
+                            	Name = Wingman
+                            	Type = Wingman
+                        Number = 1, 1, 1, 1
+			Station = Our_Carrier
+
+E-2Ca                   	PATH= Hawkeye
+			Name = Hawkeye
+                            	Side = Friendly
+                                Number = 1, 1, 1, 1
+			Station = Our_Carrier
+
+F-14FDb                   	PATH = FCAP_1
+                                Number = 2, 2, 2, 2
+			Station = Our_Carrier
+
+F-14FDb                   	PATH = FCAP_2
+                                Number = 2, 2, 2, 2
+			Station = Our_Carrier
+
+F-14FDa                   	PATH = FCAP_3
+                                Number = 2, 2, 2, 2
+			Station = Our_Carrier
+
+F-14FDa		PATH = READY_5
+                        Number = 2, 2, 2, 2
+			Type = Ready_5
+			Side = FRIENDLY
+			Station = Our_Carrier
+
+SH-60a		PATH = FSAR_1
+                                Number = 1, 1, 1, 1
+			Station = Our_Carrier
+
+B-52b			PATH = FATK_1
+                        Number = 3, 3, 3, 3
+                        survive = 3,3,3,3
+
+B-52b                   PATH = FATK_2
+                        name = fbomber
+                        Number = 3, 3, 3, 3
+                        survive = 3,3,3,3
+
+B-52b			PATH = FATK_3
+                        Number = 3, 3, 3, 3
+                        survive = 3,3,3,3
+
+B-52b			PATH = FATK_4
+                        Number = 3, 3, 3, 3
+                        survive = 3,3,3,3
+
+; SOVIET AIRCRAFT
+
+Tu-16Ja		PATH = ESRCH_1
+			Side = Enemy
+                        Number = 1, 1, 1, 1
+
+Tu-95Da		PATH = ESRCH_2
+			Side = Enemy
+                        Number = 1, 1, 1, 1
+
+Yak-38c                 PATH = ECAP_1
+			Side = Enemy
+                        Number = 2, 2, 2, 2
+
+MiG-29f                 PATH = ECAP_2
+			Side = Enemy
+                        Number = 2, 2, 2, 2
+
+MiG-29c                 PATH = ECAP_3
+			Side = Enemy
+                        Number = 2, 2, 2, 2
+
+Yak-38c                 PATH = ECAP_4
+			Side = Enemy
+                        Number = 4, 4, 4, 4
+
+MiG-29f                 PATH = Ecap_5
+			Side = Enemy
+                        Number = 2, 2, 2, 2
+
+Ka-27a                  PATH = EHELO_1
+			Side = Enemy
+                        Number = 1, 1, 1, 1
+
+Ka-25a                  PATH = EHELO_2
+			Side = Enemy
+                        Number = 1, 1, 1, 1
+
+; MISSION STANDARD ENVIRONMENTS
+
+F-16b			PATH = NORCAP_1
+			Side = Friendly
+                        Number = 2, 2, 2, 2
+
+F-16b			PATH = NORCAP_2
+			Side = Friendly
+                        Number = 2, 2, 2, 2
+
+P-3a                    PATH = FMSE_1
+                           	Side = Friendly
+                                Number = 1, 1, 1, 1
+
+ Tu-126a               	PATH = EMSE_1
+                            	Side = Enemy
+                                Number = 1, 1, 1, 1
+
+Tu-142a               	PATH = EMSE_2
+                            	Side = Enemy
+                                Number = 1, 1, 1, 1
+
+Su-17a		PATH = EMSE_3
+			Side = Enemy
+                        Number = 2, 2, 2, 2
+
+MiG-21c		PATH = FINCAP
+			Side = Neutral
+                        Number = 2, 2, 2, 2
+
+Viggena		PATH = SWEDECAP
+			Side = Neutral
+                        Number = 2, 2, 2, 2
+[END]

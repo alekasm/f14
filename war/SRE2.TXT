@@ -1,0 +1,71 @@
+;
+; FIGHTING WITHDRAWAL #1 Box 1a Testing the Waters
+;
+
+[DESCRIPTION]
+T16Srch
+
+[WORLD]
+NorthCape
+
+[TIME]
+07:30
+
+[WEATHER]
+HighClouds
+
+[CEILING]
+35000
+
+[LOADOUT]
+MC_Alpha
+
+[BRIEFING]
+TESTING THE WATERS: Outstanding mission! Your success at stopping the surprise attack has
+cost the Soviets their best chance at destroying our carrier. Now, having been alerted to the
+danger we will be in a much better position to defend against such attacks in the future. The
+Soviets have also lost valuable time, time they can't afford to lose if they are to remain on
+schedule. Tu-16L "Badger" ELINT aircraft are patrolling at the outer edges of our radar
+coverage. They are trying to locate our carrier by detecting our transmissions. These
+electronic snoopers must be intercepted before they pinpoint our carrier.
+
+To win this mission you and your wingman must shoot down at least three (3) Tu-16L
+"Badgers"
+
+[STATIONS]
+
+station = Our_Carrier
+station = Their_Carrier
+
+[PATHS]
+
+; U.S Surface Ship Paths
+
+Carrier_1       = (65,45 ) Speed = 30 Heading = 205
+
+;  U.S. Aircraft Paths
+
+Player 	= ( 125,45 ) Elev = 15000 Speed = 400 Heading = 10 CAP
+                	( Carrier) Land
+
+[OBJECTS]
+; U.S. Surface Ships
+
+Nimitza                 PATH = Carrier_1
+                            	Name = Carrier
+                          	Side = Friendly
+			Station = Our_Carrier
+
+; U.S. Aircraft
+
+F-14FDa                   	PATH = Player
+                            	Name = You
+                            	Type = Player
+			Station = Our_Carrier
+
+F-14FDa                   	PATH = Player
+                            	Name = Wingman
+                            	Type = Wingman
+			Station = Our_Carrier
+
+[END]

@@ -1,0 +1,30 @@
+File-> readmis.c, Line-> 1117
+Either a bad object name or command has been entered
+File fw110a.txt, line 157, section [objects]: bad entry sovlf
+File-> readmis.c, Line-> 1117
+Either a bad object name or command has been entered
+File fw110a.txt, line 214, section [objects]: bad entry must_survive
+File-> readmis.c, Line-> 1040
+Unknown path entered
+File fw110a.txt, line 230, path esrch_2
+File-> readmis.c, Line-> 456
+Unknown object name entered as alias in path list
+File fw110a.txt, path name sovlf, object name ffff
+File-> readmis.c, Line-> 456
+Unknown object name entered as alias in path list
+File fw110a.txt, path name player, object name FSTRIKE_1
+File-> readmis.c, Line-> 456
+Unknown object name entered as alias in path list
+File fw110a.txt, path name fstrike_1, object name SovLF
+File-> readmis.c, Line-> 456
+Unknown object name entered as alias in path list
+File fw110a.txt, path name fstrike_2, object name FSTRIKE_1
+File-> readmis.c, Line-> 456
+Unknown object name entered as alias in path list
+File fw110a.txt, path name fstrike_3, object name SovLF
+File-> readmis.c, Line-> 456
+Unknown object name entered as alias in path list
+File fw110a.txt, path name ehelo_2, object name SovLF
+File-> readmis.c, Line-> 529
+Object with no specific location or path defined
+file fw110a.txt, object type tu-95da, object name /, object number in file 0

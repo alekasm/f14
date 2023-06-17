@@ -1,0 +1,260 @@
+INCDIR=..\h
+CFLAGS=/FPa /G2 /AM /Osegcl /nologo /c
+#LFLAGS=/MAP /SEG:256 /ST:3500 /F /PACKC
+LFLAGS=/MAP /SEG:256 /ST:3500
+AFLAGS=/n
+OBJS = \
+	monoprin.obj \
+	adicrt.obj \
+	npolys.obj \
+	n3d.obj \
+	emsload.obj \
+	pasm.obj \
+	emm.obj \
+	nqfly.obj \
+#	3d.obj \
+	3dexcept.obj \
+	3dloadt.obj  \
+	3dloader.obj \
+	3dmatrix.obj \
+	3dobject.obj \
+	3dplanes.obj \
+	3dscene.obj  \
+	aaa.obj      \
+	aaahit.obj   \
+	armt.obj     \
+	awacs.obj    \
+	awg9.obj     \
+	billasm.obj  \
+	boats.obj    \
+	bullets.obj  \
+	carr.obj     \
+	carrai.obj   \
+#	clip.obj     \
+	cmds.obj     \
+	cockpit.obj  \
+	ctrlvect.obj \
+	ddd.obj	     \
+	egraph.obj   \
+	ems.obj      \
+	flight2.obj  \
+	flir.obj     \
+	fltmath.obj  \
+	gmain.obj    \
+	nhorz.obj     \
+	horzasm.obj  \
+	hud2.obj     \
+	hsd.obj	     \
+	joystx.obj   \
+	njoycal.obj   \
+	keyjoy.obj   \
+	libglue.obj  \
+#	loadfile.obj \
+	loadmiss.obj \
+	map.obj	     \
+	math.obj     \
+	mcga.obj     \
+	mcgamask.obj \
+ 	nmenus.obj   \
+	message.obj  \
+	options.obj  \
+	ovl.obj      \
+	planes.obj   \
+	planes2.obj  \
+	planes3.obj  \
+	radars.obj   \
+	rastport.obj \
+	riohead.obj  \
+	riomap.obj   \
+	sams.obj     \
+	savemode.obj \
+	sound.obj    \
+	sprites.obj  \
+	stealth.obj  \
+	support.obj  \
+	tac.obj      \
+	tews.obj     \
+	tgtflir.obj  \
+	tid.obj	     \
+	trig.obj     \
+	track.obj    \
+	views.obj    \
+	vdi.obj	     \
+	world.obj
+
+all: f14.exe
+
+f14.exe: $(OBJS)
+	link $(LFLAGS) @<<f14.lrf
+$(OBJS: =+^
+)
+f14.exe
+f14.map
+..\lib\mpslibm.lib;
+<<KEEP
+
+monoprin.obj: monoprin.c
+    CL $(CFLAGS) monoprin.c
+adicrt.obj: adicrt.c
+    CL $(CFLAGS) adicrt.c
+emsload.obj: emsload.c
+    CL $(CFLAGS) emsload.c
+npolys.obj: npolys.c
+    CL $(CFLAGS) npolys.c
+n3d.obj: n3d.c
+    CL $(CFLAGS) n3d.c
+nqfly.obj: nqfly.c
+    CL $(CFLAGS) nqfly.c
+3dexcept.obj: 3dexcept.c
+    CL $(CFLAGS) 3dexcept.c
+3dloadt.obj: 3dloadt.c
+    CL $(CFLAGS) 3dloadt.c
+3dloader.obj: 3dloader.c
+    CL $(CFLAGS) 3dloader.c
+3dobject.obj: 3dobject.c
+    CL $(CFLAGS) 3dobject.c
+3dplanes.obj: 3dplanes.c
+    CL $(CFLAGS) 3dplanes.c
+3dscene.obj: 3dscene.c
+    CL $(CFLAGS) 3dscene.c
+aaahit.obj: aaahit.c
+    CL $(CFLAGS) aaahit.c
+adi.obj: adi.c
+    CL $(CFLAGS) adi.c
+awg9.obj: awg9.c $(INCDIR)\awg9.h
+    CL $(CFLAGS) awg9.c
+armt.obj: armt.c
+    CL $(CFLAGS) armt.c
+awacs.obj: awacs.c
+    CL $(CFLAGS) awacs.c
+billasm.obj: billasm.c
+    CL $(CFLAGS) billasm.c
+boats.obj: boats.c
+    CL $(CFLAGS) boats.c
+bullets.obj: bullets.c
+    CL $(CFLAGS) bullets.c
+carr.obj: carr.c $(INCDIR)\f15defs.h
+    CL $(CFLAGS) carr.c
+carrai.obj: carrai.c
+    CL $(CFLAGS) carrai.c
+cmds.obj: cmds.c
+    CL $(CFLAGS) cmds.c
+cockpit.obj: cockpit.c
+    CL $(CFLAGS) cockpit.c
+ddd.obj: ddd.c
+    CL $(CFLAGS) ddd.c
+flight2.obj: flight2.c
+    CL $(CFLAGS) flight2.c
+flir.obj: flir.c
+    CL $(CFLAGS) flir.c
+fltmath.obj: fltmath.c
+    CL $(CFLAGS) fltmath.c
+gmain.obj: gmain.c
+    CL $(CFLAGS) gmain.c
+nhorz.obj: nhorz.c
+    CL $(CFLAGS) nhorz.c
+hud2.obj: hud2.c
+    CL $(CFLAGS) hud2.c
+hsd.obj: hsd.c
+    CL $(CFLAGS) hsd.c
+njoycal.obj: njoycal.c
+    CL $(CFLAGS) njoycal.c
+loadfile.obj: loadfile.c
+    CL $(CFLAGS) loadfile.c
+loadmiss.obj: loadmiss.c
+    CL $(CFLAGS) loadmiss.c
+map.obj: map.c
+    CL $(CFLAGS) map.c
+nmenus.obj: nmenus.c
+    CL $(CFLAGS) nmenus.c
+message.obj: message.c
+    CL $(CFLAGS) message.c
+options.obj: options.c
+    CL $(CFLAGS) options.c
+ovl.obj: ovl.c
+    CL $(CFLAGS) ovl.c
+planes.obj: planes.c
+    CL $(CFLAGS) planes.c
+planes2.obj: planes2.c
+    CL $(CFLAGS) planes2.c
+planes3.obj: planes3.c
+    CL $(CFLAGS) planes3.c
+radars.obj: radars.c
+    CL $(CFLAGS) radars.c
+rastport.obj: rastport.c
+    CL $(CFLAGS) rastport.c
+riomap.obj: riomap.c
+    CL $(CFLAGS) riomap.c
+riohead.obj: riohead.c
+    CL $(CFLAGS) riohead.c
+sams.obj: sams.c
+    CL $(CFLAGS) sams.c
+savemode.obj: savemode.c
+    CL $(CFLAGS) savemode.c
+sound.obj: sound.c
+    CL $(CFLAGS) sound.c
+sprites.obj: sprites.c
+    CL $(CFLAGS) sprites.c
+stealth.obj: stealth.c
+    CL $(CFLAGS) stealth.c
+support.obj: support.c
+    CL $(CFLAGS) support.c
+tac.obj: tac.c
+    CL $(CFLAGS) tac.c
+tews.obj: tews.c
+    CL $(CFLAGS) tews.c
+tid.obj: tid.c
+    CL $(CFLAGS) tid.c
+tgtflir.obj: tgtflir.c
+    CL $(CFLAGS) tgtflir.c
+track.obj: track.c
+    CL $(CFLAGS) track.c
+views.obj: views.c
+    CL $(CFLAGS) views.c
+vdi.obj: vdi.c
+    CL $(CFLAGS) vdi.c
+world.obj: world.c
+    CL $(CFLAGS) world.c
+
+# asm files
+pasm.obj: pasm.asm
+    masm $(AFLAGS) pasm.asm;
+emm.obj: emm.asm
+    masm $(AFLAGS) emm.asm;
+
+
+3d.obj: 3d.asm
+    masm $(AFLAGS) 3d.asm;
+3dmatrix.obj: 3dmatrix.asm
+    masm $(AFLAGS) 3dmatrix.asm;
+aaa.obj: aaa.asm
+    masm $(AFLAGS) aaa.asm;
+clip.obj: clip.asm
+    masm $(AFLAGS) clip.asm;
+ctrlvect.obj: ctrlvect.asm
+    masm $(AFLAGS) ctrlvect.asm;
+egraph.obj: egraph.asm
+    masm $(AFLAGS) egraph.asm;
+ems.obj: ems.asm
+    masm $(AFLAGS) ems.asm;
+horzasm.obj: horzasm.asm
+    masm $(AFLAGS) horzasm.asm;
+joystx.obj: joystx.asm
+    masm $(AFLAGS) joystx.asm;
+keyjoy.obj: keyjoy.asm
+    masm $(AFLAGS) keyjoy.asm;
+libglue.obj: libglue.asm
+    masm $(AFLAGS) libglue.asm;
+math.obj: math.asm
+    masm $(AFLAGS) math.asm;
+mcga.obj: mcga.asm
+    masm $(AFLAGS) mcga.asm;
+mcgamask.obj: mcgamask.asm
+    masm $(AFLAGS) mcgamask.asm;
+trig.obj: trig.asm
+    masm $(AFLAGS) trig.asm;
+
+
+
+
+

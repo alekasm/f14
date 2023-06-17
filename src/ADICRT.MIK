@@ -1,0 +1,89 @@
+#include <dos.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "library.h"
+#include "world.h"
+#include "sdata.h"
+#include "Cockpit.h"
+#include "f15defs.h"
+#include "awg9.h"
+#include "armt.h"
+#include "proto.h"
+
+#define 	DEG			182
+#define		PL_GAP		10
+#define		PL_CTR_X	CRTXCENT
+#define		PL_CTR_Y	CRTYCENT
+
+
+extern  struct RastPort *RpCRT;
+
+extern COORD    Px,Py;
+extern unsigned Alt;
+extern int      OurHead;
+extern int      sx,sy,sz;
+extern UWORD    Rtime;
+extern int 		OurRoll;
+extern int 		OurPitch;
+
+int AdiCrt(int CrtNr)
+{
+	static pos;
+	static int t1;
+	int xpos=0;
+	int xpos2=25;
+	static int ypos=-30;
+	static int ypos2=-10;
+	int p1,p2,p3,p4;
+	int p5,p6,p7,p8;
+	int x1,x2,y1,y2;
+	int i;
+	int basedeg;
+	int pts[4][2];
+	int a[4][2] = { {-15,-10},
+					{15,-10},
+					{15,0},
+					{-15,0}};
+
+	int t[8] = {0,0,0,0,0,0,0,0};
+	int mseg;
+
+	RectFill(RpCRT, 0,0, RpCRT->Width1+1,RpCRT->Length1+1, BLACK);
+
+	if (mseg=MapInEMSSprite(MISCSPRTSEG,0)) {
+		TransRectCopy(mseg,37,35,24,21,RpCRT,227,140,0);
+	}
+
+	basedeg = (OurPitch / DEG);
+
+	if (basedeg >0) {
+		a[2][1]+= basedeg;
+		a[3][1]+= basedeg;
+	}
+	if (basedeg <0) {
+		a[2][1]+=basedeg;
+		a[3][1]+=basedeg;
+	}
+
+	/* Sky area */
+	for (i=0; i<4; i++)
+		rotate_pt(a[i],pts[i],OurRoll);
+
+	t[0] = pts[0][0]+13;
+	t[1] = pts[0][1]+13;
+	t[2] = pts[1][0]+13;
+	t[3] = pts[1][1]+13;
+	t[4] = pts[2][0]+13;
+	t[5] = pts[2][1]+13;
+	t[6] = pts[3][0]+13;
+	t[7] = pts[3][1]+13;
+
+	DrawPoly(RpCRT,4,t,15);
+
+	if (mseg=MapInEMSSprite(MISCSPRTSEG,0)) {
+		TransRectCopy(mseg,66,35,8,10,RpCRT,235,150,0);
+	}
+
+}
+

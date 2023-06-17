@@ -1,0 +1,127 @@
+#include "library.h"
+#include "f15defs.h"
+#include "world.h"
+#include "sdata.h"
+#include "common.h"
+#include "armt.h"
+#include "awg9.h"
+#include <dos.h>
+#include <string.h>
+
+UWORD   CanCrash;
+UWORD   RealLandings;
+UWORD   Joystick;
+UWORD   ThrustStick;
+UWORD   CoolyStick;
+UWORD   RudderStick;
+UWORD   TimeOfDay;
+UWORD   RealDamage;
+UWORD   Campaign;
+UWORD   StickType;
+
+extern UBYTE JoyVals[];
+extern UBYTE DeadZone;
+
+extern  RPS     *Rp1;
+extern  int     REALFLIGHT;
+extern  UWORD   CLOUDHEIGHT;
+extern  int     SndPriority;
+
+
+extern	int	    MTNDETAIL;
+extern	int	    GRNDDETAIL;
+extern	int	    OBJECTDETAIL;
+extern	int	    PLANEDETAIL;
+extern	int	    XPLODETAIL;
+extern	int	    OVERCAST;
+extern  int     ROLLRATE;
+int     SKYDETAIL;
+
+//***************************************************************************
+InitOptions()
+{
+    int         i;
+
+    Direction   = 1;  /* Headed north */
+	Conflict = 2;
+	SndPriority = 0;
+
+    RealityLevels();
+	seedme();
+}
+
+//***************************************************************************
+RealityLevels()
+{
+    switch (Diff) {
+        case 0:
+	        CanCrash    = 0;
+	        RealLandings= 0;
+            AWG9_REALITY_LEVEL = AWG9_EASY;
+            REALFLIGHT  = 1;
+            Status &= ~TRAINING;
+            TimeOfDay   = 8*60; /* 8:00 AM */
+            break;
+
+        case 1:
+	        CanCrash    = 0;
+	        RealLandings= 0;
+            AWG9_REALITY_LEVEL = AWG9_AUTHENTIC;
+            REALFLIGHT  = 1;
+            Status &= ~TRAINING;
+            TimeOfDay   = 19*60; /*  6:00 PM */
+            break;
+
+        case 2:
+	        CanCrash    = 1;
+	        RealLandings= 0;
+            AWG9_REALITY_LEVEL=AWG9_AUTHENTIC;
+            REALFLIGHT  = 1;
+            Status &= ~TRAINING;
+            TimeOfDay   = 6*60+8; /*  6:08 AM */
+            break;
+
+        case 3:
+	        CanCrash    = 1;
+	        RealLandings= 1;
+            AWG9_REALITY_LEVEL=AWG9_AUTHENTIC;
+            REALFLIGHT  = 1;
+            Status &= ~TRAINING;
+            TimeOfDay   = 20*60+30; /*  8:30 PM */
+            break;
+    }
+}
+
+
+//                    KB,   1 stick,  2 stx, stk&throt, ThrstMast, CH Pro &  VPilot sticks
+
+static ThrustVals[] = {0,      0,       8,       8,       0,       8,       8  };
+static CoolyVals [] = {0,      0,       0,       0,       8,       0,       0  };
+static RudderVals[] = {0,      0,       4,       0,       0,       0,       0  };
+
+//***************************************************************************
+SetJoysticks(int i)
+{
+    if (RudderVals[StickType]) RudderStick = 0;
+
+    StickType = i;
+    Joystick = i ? 2+1 : 0;
+    ThrustStick = ThrustVals[i];
+    CoolyStick = CoolyVals[i];
+    RudderStick |= RudderVals[i];
+}
+
+//***************************************************************************
+atoh (char *ahex)
+{
+	// Converts 4-digit hex string (Caps A-F) to unsigned int
+	unsigned i, u;
+	u=0;
+	while(i=*ahex++) {
+		if(i>'9') {
+			i-=7;  // Convert 'A' to '9'+1
+		}
+		u=u*16+i-'0';
+	}
+	return(u);
+}

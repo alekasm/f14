@@ -1,0 +1,13 @@
+	extrn	GMODE:word, GWORKPAGE:WORD, GDISPLAYPAGE:WORD
+	extrn	GXLO:word, GYLO:WORD, GXHI:WORD
+	extrn	GYHI:word, GXMID:WORD, GYMID:WORD
+	extrn	GCOLOR:word, GROW:WORD, GCOL:WORD
+	extrn	GFONT:word, GFCOLOR:WORD, GBCOLOR:WORD
+	extrn	GRPAGE0:word, GRPAGE1:WORD, GRPAGE2:WORD
+	extrn	GRPAGE3:word, GRPAGE:WORD
+	extrn	LINEST:word
+
+	extrn	Line:PROC, PFill:PROC, FLine:PROC, VertFline:PROC
+	extrn	SetColor:PROC
+	extrn	GDrawDot:PROC
+

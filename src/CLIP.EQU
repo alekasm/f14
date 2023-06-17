@@ -1,0 +1,45 @@
+UPMSK	equ	1
+DWNMSK	equ	2
+LFTMSK	equ	4
+RTMSK	equ	8
+BADLINE	equ	080h
+CLIPPEDZ	equ	040h
+XTRA1RT		equ	1
+XTRA1LFT	equ	2
+XTRA2RT		equ	4
+XTRA2LFT	equ	8
+CX1	equ	0
+CX1HI	equ	2
+CFLAG	equ	2
+CY1	equ	4
+CY1HI	equ	6
+C1XTRA	equ	6
+CX2	equ	8
+CX2HI	equ	10
+CY2	equ	12
+CY2HI	equ	14
+C2XTRA	equ	14
+CZX1	EQU	16
+CZX1HI	EQU	18
+CZY1	EQU	20
+CZY1HI	EQU	22
+CRECLEN	EQU	CZY1HI+2
+
+
+IV	equ	0
+C1	equ	IV
+JV	equ	2
+C2	equ	JV
+KV	equ	4
+C3	equ	KV
+R1	equ	0
+R2	equ	6
+R3	equ	12
+C1LO	equ	0
+C1HI	equ	2
+C2LO	equ	4
+C2HI	equ	6
+C3LO	equ	8
+C3HI	equ	10
+
+

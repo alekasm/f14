@@ -1,0 +1,19 @@
+F-14 Fleet Defender					Report Date: 12/2/93
+Version: 1.10
+Exec:	F14.EXE  12-02-93 2:51p
+-----------------------------------------------------------------------------
+1.  Gun Camera - Standard, Moderate, Authentic
+2.  Easy Radar Display - Ground Map
+3.  Crash Detection
+4.  TEWS quadrant lights
+5.  Fixed Radar Dials in Backseat (Left)
+6.  Fixed VVI/Radar Alt.
+7.  Added Carrier Wake
+8.  Med. World - single campaign
+9.  Fixed wing sweep problems
+10. Auto-RIO Completed!
+11. Added/Fixed Brake/Trust sprites in Front Cockpit (Left)
+12. Added Realistic Damage modes
+13. Restricted view points (will not look thru carrier) (Bug 205)
+14. Fixed Boresight Bug
+15. Fixed lockup bug (Bug 156,155)

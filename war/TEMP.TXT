@@ -1,0 +1,79 @@
+
+mig23a        "MIG-23", 700, 3, R_MIG23,    MIG23PX,  AA2C,   AA2D, 2, 4, /* D+K */
+mig23b        "MIG-23", 700, 3, R_MIG23,    MIG23PX,   AA7,   AA2D, 2, 4, /* D+K */
+mig23c        "MIG-23", 700, 3, R_MIG23,    MIG23PX,   AA7,    AA8, 2, 4, /* D+K */
+mig25a        "MIG-25", 750, 2, R_MIG23,    MIG25PX,   AA6,    AA8, 2, 2, /* D */
+mig25b        "MIG-25", 750, 2, R_MIG23,    MIG25PX,   AA7,      0, 4, 0, /* D */
+mig25c        "MIG-25", 750, 2, R_MIG23,    MIG25PX,   AA6,      0, 4, 0, /* D */
+mig29a        "MIG-29", 700, 5, R_MIG29,    MIG29PX, AA10C,  AA10B, 4, 2, /* K */
+mig29b        "MIG-29", 700, 5, R_MIG29,    MIG29PX, AA10A,   AA11, 4, 2, /* D+K */
+mig29c        "MIG-29", 700, 5, R_MIG29,    MIG29PX, AA10A,  AA10B, 4, 2, /* D+K */
+mig29k        "MIG-29K",700, 5, R_MIG29,    MIG29PX, AA10A,   AA11, 2, 4, /* D+K */
+f1            "F-1",    700, 4, R_MIG23,    MIRF1PX,   R530, MAGIC, 4, 2, /* D */
+mig21a        "MIG21",  700, 4, R_MIG21,    MIG21PX,      0,  AA2D, 0, 4, /* D */
+mig21b        "MIG21",  700, 4, R_MIG21,    MIG21PX,   AA2C,  AA2D, 2, 2, /* D */
+mig21c        "MIG21",  700, 4, R_MIG21,    MIG21PX,      0,   AA8, 0, 4, /* D+K */
+mig21d        "MIG21",  700, 4, R_MIG21,    MIG21PX,   AA2C,   AA8, 2, 2, /* D+K */
+an22          "AN-22",  440, 1, NONE   ,     AN12PX,      0,     0, 0, 0, /* D */
+an26          "AN-26",  340, 1, NONE   ,     AN26PX,      0,     0, 0, 0, /* D+P */
+mig31         "MIG31",  700, 4, R_MIG29,    MIG29PX,    AA6,   AA8, 4, 2, /* D+K */
+su27          "SU-27",  650, 4, R_SU17C,    MIG23PX,  AA10A,   AA8, 2, 2, /* D */
+su27k         "SU-27K", 650, 4, R_SU17C,    MIG23PX,  AA10A,  AA11, 2, 2, /* D */
+su20a         "SU-20",  700, 3, R_MIG21,     SU17PX,    AA7,   AA8, 2, 2, /* D */
+su20b         "SU-20",  700, 3, R_MIG21,     SU17PX,   AA2C,  AA2D, 2, 2, /* D */
+su24          "SU-24",  700, 3, R_SU17C,     F111PX, FFBOMB,   AA8, 2, 2, /* D */
+su25a         "SU-25",  450, 3, NONE,        SU25PX, FFBOMB,   AA8, 2, 2, /* D+K */
+su25b         "SU-25",  450, 3, NONE,        SU25PX, FFBOMB,  AA2D, 2, 2, /* D+K */
+su17          "SU-17",  700, 2, NONE,        SU17PX, FFBOMB,  AA2D, 2, 2, /* D+K */
+tu16          "TU-16C", 450, 1, NONE,        BEARPX,    AS4,     0, 6, 0, /* D+K */
+tu16d         "TU-16D", 450, 1, NONE,        BEARPX,      0,     0, 0, 0, /* D+K */
+tu16e         "TU-16E", 450, 1, NONE,        BEARPX,      0,     0, 0, 0, /* D+K */
+tu16g         "TU-16G", 450, 1, R_SHORN,     BEARPX,    AS4,     0, 6, 0, /* D+K */
+tu16h         "TU-16H", 450, 1, NONE,        BEARPX,      0,     0, 0, 0, /* D+K */
+tu16j         "TU-16J", 450, 1, R_SHORN,     BEARPX,      0,     0, 0, 0, /* D+K */
+tu16l         "TU-16L", 450, 1, NONE,        BEARPX,      0,     0, 0, 0, /* D+K */
+tu22          "TU-22",  500, 1, R_IL76 ,     BEARPX,    AS6,     0, 6, 0, /* D+K */
+tu22m         "TU-22M", 600, 1, NONE   ,     BEARPX,    AS4,     0, 6, 0, /* D+K */
+tu95          "TU-95G", 400, 1, R_IL76 ,     BEARPX,    AS4,     0, 6, 0, /* D+K */
+tu95d         "TU-95D", 400, 1, R_IL76 ,     BEARPX,      0,     0, 0, 0, /* D+K */
+tu95e         "TU-95E", 400, 1, R_IL76 ,     BEARPX,      0,     0, 0, 0, /* D+K */
+tu126         "TU-126", 350, 1, R_IL76 ,     BEARPX,      0,     0, 0, 0, /* D+K */
+yak38a        "YAK38",  400, 3, NONE   ,      F5EPX,    AA8,     0, 4, 0, /* D+K */
+yak38b        "YAK38",  400, 3, NONE   ,      F5EPX,    AA8,FFBOMB, 4, 2, /* D+K */
+hind          "HIND",   180, 5, NONE   ,     HINDPX,      0,   AA8, 0, 4, /* D,K+P */
+hip           "HIP",    150, 5, NONE   ,      HIPPX,      0,     0, 0, 0, /* D,K+P */
+hormone       "HORMONE",130, 5, NONE   ,      HIPPX,      0,     0, 0, 0, /* D,K+P */
+helix         "HELIX",  130, 5, NONE   ,      HIPPX,      0,     0, 0, 0, /* D,K+P */
+haze          "HAZE",   130, 5, NONE   ,      HIPPX,      0,     0, 0, 0, /* D,K+P */
+Be12          "BE12",   180, 1, R_PUFF , MAINSTAYPX,      0,     0, 0, 0, /* D */
+Il38          "IL-38",  180, 1, R_WETI , MAINSTAYPX,      0,     0, 0, 0, /* D */
+j22           "J22",    400, 5, NONE   ,     F111PX,    AA8,     0, 2, 0, /* D */
+G4            "G4",     400, 2, NONE   ,     F111PX, FFBOMB,     0, 2, 0, /* D */
+P3            "P3",     180, 1, R_PUFF , MAINSTAYPX,      0,     0, 0, 0, /* D */
+S3            "S3",     180, 1, R_PUFF , MAINSTAYPX,      0,     0, 0, 0, /* D */
+SH2G          "SH2G"   ,130, 5, NONE   ,      HIPPX,      0,     0, 0, 0, /* D,K+P */
+sh3a          "SH3A"   ,130, 5, NONE   ,      HIPPX,      0,     0, 0, 0, /* D,K+P */
+sh60          "SH60"   ,130, 5, NONE   ,      HIPPX,      0,     0, 0, 0, /* D,K+P */
+mh53          "MH53"   ,130, 5, NONE   ,      HIPPX,      0,     0, 0, 0, /* D,K+P */
+gr1           "GR1"    ,700, 2, R_F16  ,     F111PX,  AIM9M,     0, 4, 0, /* D */
+mk3           "MK3"    ,700, 2, R_F16  ,     F111PX,  AIM9M,FFBOMB, 4, 2, /* D */
+nimrod        "NIMROD", 180, 1, NONE   ,     HERCPX,      0,     0, 0, 0, /* P */
+c130          "C130",   300, 1, NONE   ,     HERCPX,      0,     0, 0, 0, /* P */
+a6a           "A-6",    500, 3, NONE   ,   BRONCOPX, FFBOMB, AIM9M, 2, 2, /* ALL */
+a6b           "A-6",    500, 3, NONE   ,   BRONCOPX,HARPOON, AIM9M, 2, 2, /* ALL */
+awacs         "AWACS",  480, 1, R_AWACS,   SENTRYPX,      0,     0, 0, 0, /* ALL */
+f14           "F-14",   700, 4, R_MIG29,      F14PX, AIM120, AIM9M, 4, 4, /* ALL */
+f16           "F-16",   700, 5, R_F16  ,      F16PX,      0,     0, 0, 0, /* ALL */
+f18           "F-18",   700, 4, R_MIG29,      F18PX, 	AIM9M,FFBOMB, 2, 2, /* ALL */
+f111          "F-111",  750, 3, R_F16  ,     F111PX,      0,     0, 0, 0, /* ALL */
+ka6           "KA-6",   500, 3, NONE   ,   BRONCOPX,      0,     0, 0, 0, /* ALL */
+f5            "F-5",    600, 5, R_MIG21,      F5EPX,      0, MAGIC, 0, 2, /* P */
+f16           "F-16",   700, 5, R_F16  ,      F16PX,   R530, MAGIC, 2, 2, /* P */
+viggen        "VIGGEN", 700, 5, R_MIG23,    MIR3PX,   AIM7M, AIM9M, 2, 2, /* P */
+RAFT          "RAFT"  ,   2, 1, NONE   ,   CHUTEPX,       0,     0, 0, 0, /* P */
+TARGET        "TARGET",   1, 1, NONE   ,   CHUTEPX,       0,     0, 0, 0, /* P */
+trawler       "TRAWLER", 50, 1, NONE   ,     HERCPX,      0,     0, 0, 0, /* ALL */
+carrier       "CARRIER", 50, 1, R_MBOAT,       NOPX, AIM120,     0,30, 0, /* ALL */
+kitchen       "AS-4",  1800, 5, NONE   ,    MIG21PX,      0,     0, 0, 0, /* ALL */
+kingfish      "AS-6",  1800, 5, NONE   ,    MIG21PX,      0,     0, 0, 0, /* ALL */
+

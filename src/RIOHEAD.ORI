@@ -1,0 +1,372 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <bios.h>
+#include <dos.h>
+#include "types.h"
+#include "library.h"
+#include "world.h"
+#include "sdata.h"
+#include "sounds.h"
+#include "common.h"
+#include "f15defs.h"
+#include "cockpit.h"
+#include "carr.h"
+#include "awg9.h"
+#include "armt.h"
+
+typedef struct {
+	int head;
+	int lshoulder;
+	int larm;
+	int rshoulder;
+} ranim;
+
+typedef struct {
+	int x;
+	int y;
+	int w;
+	int h;
+	int page;
+	int px;
+	int py;
+} animtype;
+
+
+
+
+//***************************************************************************
+// THIS SUCKS!!! THIS WAS NOT MY IDEA - I REALIZE THAT THIS TAKES UP TO MUCH
+// SPACE, BUT BLAM MIKE R.
+
+
+animtype RioHead[15] =
+{
+	0,   0,  75, 81, 0, 180, 64,
+	76,  0,  72, 80, 0, 186, 65,
+	149, 0,  76, 80, 0, 186, 65,
+	226, 0,  80, 80, 0, 195, 65,
+	230, 0,  88, 78, 1, 191, 67,
+	0,   82, 88, 80, 0, 189, 65,
+	89,  81, 98, 80, 0, 175, 65,
+	0,   0,  73, 79, 1, 180, 66,
+	74,  0,  74, 79, 1, 175, 66,
+	149, 0,  80, 78, 1, 169, 67,
+	180, 80, 91, 76, 1, 158, 69,
+	189, 81, 109,71, 0, 140, 74,
+	90,  80, 89, 80, 1, 160, 65,
+	0,   80, 89, 80, 1, 160, 65,
+};
+
+animtype RioLeftShould[13] =
+{
+	0,   163, 38, 31, 0, 147,131,
+	39,  163, 47, 33, 0, 147,129,
+	87,  163, 44, 33, 0, 147,129,
+	276, 79,  43, 29, 1, 147,132,
+	276, 109, 43, 29, 1, 147,133,
+	276, 139, 43, 29, 1, 147,133,
+	276, 169, 43, 24, 1, 147,138,
+	180, 157, 46, 22, 1, 144,140,
+	180, 180, 47, 16, 1, 143,146,
+	230, 157, 45, 19, 1, 145,143,
+	230, 177, 45, 21, 1, 145,141,
+};
+
+animtype RioLeftArm[6] =
+{
+	0,  161, 34, 36, 1,  134,163,
+	35, 161, 32, 36, 1,  134,163,
+	68, 161, 34, 36, 1,  132,163,
+	103,161, 36, 36, 1,  132,163,
+	140,161, 34, 36, 1,  134,163,
+};
+
+animtype RioRightShould[11] =
+{
+	237,153,27,14, 0, 262,137,
+	292,183,27,14, 0, 262,137,
+	237,168,27,14, 0, 262,137,
+	237,183,27,14, 0, 262,137,
+	265,153,26,14, 0, 262,137,
+	265,168,26,14, 0, 262,137,
+	265,183,25,14, 0, 262,137,
+	292,153,27,14, 0, 262,137,
+	292,168,25,14, 0, 262,137,
+	214,153,22,14, 0, 262,137,
+};
+
+ranim RioAnim[15] =
+{
+	0,  0,  0, 0,
+	1,  0,  0, 0,
+	2,  0,  0, 0,
+	3,  1,  0, 1,
+	4,  2,  0, 2,
+	5,  1,  0, 3,
+	6,  3,  0, 4,
+	7,  4,  0, 0,
+	8,  5,  0, 6,
+	9,  6,  0, 6,
+	10, 7,  1, 7,
+	11, 8,  2, 8,
+	12, 9,  3, 7,
+	13, 10, 4, 6,
+};
+
+extern  unsigned		Alt;
+extern  long	 PxLng,PyLng;
+extern	int      OurHead;
+extern	UWORD    Rtime;
+extern  int      View;
+extern  RPS      *Rp1, RpX1, *Rp2, *Rp3, *Rp3D;
+extern  int      VM[3][3];
+extern carriers far carrier;
+extern int AIWingMan;
+
+
+extern struct PlaneData far *GetPlanePtr(int PlaneNo);
+extern struct MissileData far *GetMissilePtr(int MissileNo);
+extern struct RadarData far *GetRadarPtr(int RadarNo);
+
+extern int whichourcarr;
+extern  COORD   Px,Py;
+
+int AnimCnt=0;
+int head_proj_x=0;
+int head_proj_y=0;
+int head_proj_z=0;
+int behindus=0;
+
+
+//***************************************************************************
+// There can be different RIO animations running
+// (1) Just searching the sky
+// (2) Watching the carrier
+// (3) Watching a Bandit during a dogfight
+// (4) Watching for additional Bandits during a dogfight
+//***************************************************************************
+DisplayRioHead()
+{
+	int mseg;
+	int mpage;
+	static int CurrRioAnim=0;
+	static int LastDesignated=-1;   // Who where we last looking at
+	static int AnimDir=1;
+	int xheadpos=0;
+	int mirrorhead;
+	int who=-1;
+
+
+	RPS Rptemp  =  {1,  0,0, 319,199, JAM3, GREEN, BLACK, 1};
+	RPS *Rtemp = &Rptemp;
+
+	//  If we had somebody designated and we currently do not have anyone
+	//  else designated, then look at this guy.
+	//  If we are looking at something or somebody and a bogie/bandit is
+	//  visual than look at that
+
+#ifdef YEP
+	if (DESIGNATED != -1) {
+		LastDesignated = DESIGNATED;
+		who = DESIGNATED;
+		Message("Looking at Designated");
+	}
+
+	if (LastDesignated !=-1) {
+		if ((DESIGNATED == -1) && (ps[LastDesignated].status&ALIVE)) {
+			if ((long)((Dist3D(PxLng - ps[LastDesignated].xL),((0x100000 - PyLng) - ps[LastDesignated].yL),(Alt - ps[LastDesignated].alt))) < 76000) {
+				who=whichourcarr;
+			} else {
+				LastDesignated=-1;
+			}
+		}
+		Message("Looking at Former Designation");
+	}
+#endif
+
+
+	who=AIWingMan;
+
+	HeadProject(ps[who].xL,ps[who].yL,ps[who].alt);
+
+	if (View==REARLEFT) {
+		xheadpos = (319-(139+(145/2)));
+		mirrorhead=1;
+	} else {
+		xheadpos = (139+(145/2));
+		mirrorhead=0;
+	}
+
+	if (mseg=MapInEMSSprite(MISCSPRTSEG,1)) {
+		ScaleRotate(mseg,(2+(145/2)),(1+(113/2)),145,113,Rtemp,xheadpos,(49+(113/2)),0x0100,0,0,mirrorhead);
+	}
+
+	AnimCnt=1;
+
+
+	if ((head_proj_x > 0) && (head_proj_y < 0)) AnimCnt=2;
+	if ((head_proj_x > 0) && (head_proj_y < -15)) AnimCnt=3;
+	if ((head_proj_x > 0) && (head_proj_y < -40)) AnimCnt=5;
+	if ((head_proj_x > 0) && (head_proj_y < -60)) AnimCnt=6;
+
+	if ((head_proj_x > 0) && (head_proj_y > 0)) AnimCnt=2;
+	if ((head_proj_x > 0) && (head_proj_y > 15)) AnimCnt=1;
+	if ((head_proj_x > 0) && (head_proj_y > 40)) AnimCnt=0;
+	if ((head_proj_x > 0) && (head_proj_y > 60)) AnimCnt=4;
+
+	if ((head_proj_x < 0) && (head_proj_y < 0)) AnimCnt=9;
+	if ((head_proj_x < 0) && (head_proj_y < -15)) AnimCnt=10;
+	if ((head_proj_x < 0) && (head_proj_y < -40)) AnimCnt=12;
+	if ((head_proj_x < 0) && (head_proj_y < -60)) AnimCnt=13;
+
+	if ((head_proj_x < 0) && (head_proj_y > 0)) AnimCnt=9;
+	if ((head_proj_x < 0) && (head_proj_y > 15)) AnimCnt=8;
+	if ((head_proj_x < 0) && (head_proj_y > 40)) AnimCnt=7;
+	if ((head_proj_x < 0) && (head_proj_y > 60)) AnimCnt=11;
+
+
+	mpage = RioHead[RioAnim[AnimCnt].head].page;
+
+	if (View==REARLEFT) {
+		xheadpos = (319-(RioHead[RioAnim[AnimCnt].head].px+(RioHead[RioAnim[AnimCnt].head].w/2)));
+	} else {
+		xheadpos = (RioHead[RioAnim[AnimCnt].head].px+(RioHead[RioAnim[AnimCnt].head].w/2));
+	}
+	if ((mseg=MapInEMSSprite(HEAD1SEG,mpage))) {
+		ScaleRotate(mseg,(RioHead[RioAnim[AnimCnt].head].x+(RioHead[RioAnim[AnimCnt].head].w/2)),
+				(RioHead[RioAnim[AnimCnt].head].y+(RioHead[RioAnim[AnimCnt].head].h/2)),
+				RioHead[RioAnim[AnimCnt].head].w,
+				RioHead[RioAnim[AnimCnt].head].h,
+				Rtemp,
+				xheadpos,
+				(RioHead[RioAnim[AnimCnt].head].py+(RioHead[RioAnim[AnimCnt].head].h/2)),
+				0x100,
+				0,
+				0,
+				mirrorhead);
+	}
+
+	mpage = RioLeftShould[RioAnim[AnimCnt].lshoulder].page;
+
+	if (View==REARLEFT) {
+		xheadpos = (319 - (RioLeftShould[RioAnim[AnimCnt].lshoulder].px+(RioLeftShould[RioAnim[AnimCnt].lshoulder].w/2)));
+	} else {
+		xheadpos = (RioLeftShould[RioAnim[AnimCnt].lshoulder].px+(RioLeftShould[RioAnim[AnimCnt].lshoulder].w/2));
+	}
+
+	if ((mseg=MapInEMSSprite(HEAD1SEG,mpage))) {
+		ScaleRotate(mseg,(RioLeftShould[RioAnim[AnimCnt].lshoulder].x+(RioLeftShould[RioAnim[AnimCnt].lshoulder].w/2)),
+				(RioLeftShould[RioAnim[AnimCnt].lshoulder].y+(RioLeftShould[RioAnim[AnimCnt].lshoulder].h/2)),
+				(RioLeftShould[RioAnim[AnimCnt].lshoulder].w),
+				(RioLeftShould[RioAnim[AnimCnt].lshoulder].h),
+				Rtemp,
+				xheadpos,
+				(RioLeftShould[RioAnim[AnimCnt].lshoulder].py+(RioLeftShould[RioAnim[AnimCnt].lshoulder].h/2)),
+				0x100,
+				0,
+				0,
+				mirrorhead);
+	}
+
+	mpage = RioLeftArm[RioAnim[AnimCnt].larm].page;
+
+	if (View==REARLEFT) {
+		xheadpos = (319 - (RioLeftArm[RioAnim[AnimCnt].larm].px+(RioLeftArm[RioAnim[AnimCnt].larm].w/2)));
+	} else {
+		xheadpos = (RioLeftArm[RioAnim[AnimCnt].larm].px+(RioLeftArm[RioAnim[AnimCnt].larm].w/2));
+	}
+
+	if (mseg=MapInEMSSprite(HEAD1SEG,mpage)) {
+		ScaleRotate(mseg,(RioLeftArm[RioAnim[AnimCnt].larm].x+(RioLeftArm[RioAnim[AnimCnt].larm].w/2)),
+				(RioLeftArm[RioAnim[AnimCnt].larm].y+(RioLeftArm[RioAnim[AnimCnt].larm].h/2)),
+				RioLeftArm[RioAnim[AnimCnt].larm].w,
+				RioLeftArm[RioAnim[AnimCnt].larm].h,
+				Rp1,
+				xheadpos,
+				(RioLeftArm[RioAnim[AnimCnt].larm].py+(RioLeftArm[RioAnim[AnimCnt].larm].h/2)),
+				0x100,
+				0,
+				0,
+				mirrorhead);
+	}
+
+	mpage = RioRightShould[RioAnim[AnimCnt].rshoulder].page;
+
+	if (View==REARLEFT) {
+		xheadpos = (319 - (RioRightShould[RioAnim[AnimCnt].rshoulder].px+(RioRightShould[RioAnim[AnimCnt].rshoulder].w/2)));
+	} else {
+		xheadpos = (RioRightShould[RioAnim[AnimCnt].rshoulder].px+(RioRightShould[RioAnim[AnimCnt].rshoulder].w/2));
+	}
+
+	if (mseg=MapInEMSSprite(HEAD1SEG,mpage)) {
+		ScaleRotate(mseg,(RioRightShould[RioAnim[AnimCnt].rshoulder].x+(RioRightShould[RioAnim[AnimCnt].rshoulder].w/2)),
+				(RioRightShould[RioAnim[AnimCnt].rshoulder].y+(RioRightShould[RioAnim[AnimCnt].rshoulder].h/2)),
+				RioRightShould[RioAnim[AnimCnt].rshoulder].w,
+				RioRightShould[RioAnim[AnimCnt].rshoulder].h,
+				Rtemp,
+				xheadpos,
+				(RioRightShould[RioAnim[AnimCnt].rshoulder].py+(RioRightShould[RioAnim[AnimCnt].rshoulder].h/2)),
+				0x100,
+				0,
+				0,
+				mirrorhead);
+	}
+}
+
+
+//***************************************************************************
+int HeadProject(long x, long y, int z)
+{
+	long  dx,dy;
+	int   dz;
+	long  xe,ye,ze;
+	long   row3();
+
+    dx =-(x - PxLng);
+    dy = (y - (0x100000-PyLng));
+    dz = (z - (int) (Alt+9));
+
+    if (labs(dx)>23000L || labs(dy)>23000L) {
+        dx >>=HTOV;
+        dy >>=HTOV;
+        dz >>=HTOV;
+    }
+
+    xe=row3(0,(int)dx,(int)dy,dz);
+    ye=row3(1,(int)dx,(int)dy,dz);
+    ze=row3(2,(int)dx,(int)dy,dz);
+
+//	if (ze >= 0) return -1;
+
+	if (ze >= 0) {
+		ze = -ze;
+		behindus=1;
+	} else {
+		behindus=0;
+	}
+
+    head_proj_x  = ((xe<<8)/ze) + 160;
+    head_proj_y  = ((ye<<8)/ze);
+    head_proj_y -= head_proj_y >> 2;
+	head_proj_y += 50;
+    head_proj_z  = ze >> (HTOV+BT2KM-3);
+
+	head_proj_x = head_proj_x - 159;
+	head_proj_y = head_proj_y - 99;
+//	sprintf(Txt,"x: %d y: %d z: %d behind: %d",head_proj_x,head_proj_y,head_proj_z,behindus);
+//	Message(Txt);
+    return 0;
+}
+
+//***************************************************************************
+static long row3(int r,int dx,int dy,int dz)
+{
+	long  z;
+
+	z  = TrgMul(VM[0][r],dx);
+	z += TrgMul(VM[1][r],dz);
+	z += TrgMul(VM[2][r],dy);
+	return z;
+}
+
+

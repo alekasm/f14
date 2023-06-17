@@ -1,0 +1,88 @@
+;
+;       bear hunt mission
+;
+
+
+[world]
+NorthCape
+
+[time]
+14:34
+
+[weather]
+HighClouds
+
+[loadout]
+fd_bravo
+
+[briefing]
+    You and you wing-man must locate and destroy the four-engined Tu-95D
+    "Bears" before they can get an electronic fix on your carrier.
+    These high flyers have but one mission in life and that is to pin point
+    the enemy fleet so that other bombers can attack it.
+
+[paths]
+
+bomber_1 =      ( 170, 96 )  elevation=40000 speed=300
+                ( 148, 105 )
+                ( 130, 115 ) speed=350
+                ( 170, 96  )
+
+
+bomber_2 =      ( 160, 85 )  elevation=38000 speed=300
+                ( 125, 105 ) elevation=45000 speed=350
+                ( 160, 85 )
+
+bomber_3 =      ( 163, 68 )  elevation=32000  speed=300
+                ( 130, 85 )
+                ( 110, 100 ) elevation=40000  speed = 385
+
+carrier =       ( 62, 142)   speed=40
+                ( 100, 115 )
+
+f14     =       ( home )     launch
+                ( 110, 110 ) elevation=10000 speed=450
+                ( home )
+
+awacs =         ( 58, 136 )  elevation=40000 speed=220 awacs
+
+cap1 =          ( 69, 110 )  elevation=20000 speed=350 cap
+
+cap2 =          ( 105, 125 ) elevation=20000 speed=250 cap
+
+
+
+[objects]
+
+carrier         loc  = ( 62, 142 )
+                path = carrier
+                name = home
+
+awacs           path=awacs
+
+f14             name=cap1
+                path=cap1
+                number=2
+
+f14             name=cap2
+                path=cap2
+                number=2
+
+f14             path=f14
+                type=player
+
+f14             path=f14
+                type=wingman
+
+tu95            path=bomber_1
+                number=1
+
+tu95            path=bomber_2
+                number=1
+
+tu95            path=bomber_3
+                number=1
+
+
+
+[end]

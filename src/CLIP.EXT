@@ -1,0 +1,4 @@
+	extrn	GDrawLine:PROC, PolyLine:PROC, FillPoly:PROC
+	extrn	Clip32:PROC, Clip16:PROC, DLine:PROC, PLine:PROC
+
+

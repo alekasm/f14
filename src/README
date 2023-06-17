@@ -1,0 +1,36 @@
+FLEET DEFENDER - F-14 TOMCAT				8/16/93
+-----------------------------------------------------------------------------
+
+Keyboard Layout
+----------------
+E - Easy Landing - Position you behind the carrier in a final approach
+M - Master Arm Switch
+' - Changes between front and backseat
+
+1 - Gun
+2 - Sidewinder
+3 - Sparrow
+4 - Phoenix
+5 - Nav mode
+
+Radar Controls
+---------------
+INSERT - Change Azimuth
+HOME - Change # of bars
+PAGEUP - Move beam elevation up
+PAGEDOWN - Move beam elevation down
+DELETE - Change Radar Mode
+END - Special modes (right now only Boresight)
+Z - Zoom in radar display (only changes display)
+X - Zoom out radar display (only changes display)
+BACKSPACE - Designate Target
+L - Lock on target
+K - Break Lock
+
+
+You can use the mouse in the DDD to hook a target:
+Move the Acquisition gate over the desired target and
+click the left mouse button.  Nothing will happen, but the
+target is now designated.  To lock the target up, you can
+click the right mouse button.
+

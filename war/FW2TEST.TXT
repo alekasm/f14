@@ -1,0 +1,201 @@
+[DESCRIPTION]
+Furball
+
+[WORLD]
+NorthCape
+
+[TIME]
+08:30
+
+[WEATHER]
+HighSky
+
+;[CIELING]
+;65000
+
+;[LOADOUT]
+;MCAlpha
+
+[BRIEFING]
+This is a test. For the next sixty seconds you will be
+testing whether or not a Furball can actual happen in FLEET
+DEFENDER.
+
+
+[PATHS]
+; Surface Ships
+
+Carrier_1      = ( 128,137 ) Speed = 30 Heading = 0
+
+CGa_1     = ( 70,91 ) Speed = 45 Heading = 195
+               ( Home_A ) Form_On
+
+CGa_2     = ( 70,91 ) Speed = 45 Heading = 195
+               ( Home_A ) Form_On
+
+
+
+; Soviet Surface Ships
+
+S_Carrier_1 = ( 140,90 ) Speed = 30 Heading = 195
+
+S_CGa_1     = ( 140,91 ) Speed = 45 Heading = 195
+               ( Sov_A ) Form_On
+
+S_CGa_2     = ( 140,89 ) Speed = 45 Heading = 195
+               ( Sov_A ) Form_On
+
+S_CGa_3     = ( 139,91 ) Speed = 45 Heading = 195
+               ( Sov_A ) Form_On
+
+S_CGa_4     = ( 141,91 ) Speed = 45 Heading = 195
+               ( Sov_A ) Form_On
+
+S_CGa_5     = ( 141,92 ) Speed = 45 Heading = 195
+               ( Sov_A ) Form_On
+
+S_CGa_6     = ( 139,92 ) Speed = 45 Heading = 195
+               ( Sov_A ) Form_On
+
+S_CGa_7     = ( 139,89 ) Speed = 45 Heading = 195
+               ( Sov_A ) Form_On
+
+
+E_Helo_1  = ( 140,90) Speed = 30 Heading 195 Elev = 50
+			( Sov_A ) Form_On
+
+
+;U.S. Aircraft Paths
+
+Player    = ( Home_A ) Elev = 1 SPEED = 0 HEADING = 195 Launch
+
+FCAP_1    = ( 70,90 ) Elev = 15000 SPEED = 450 HEADING = 15 CAP
+
+FCAP_2    = ( 70,90 ) Elev = 15000 SPEED = 450 HEADING = 90 CAP
+
+FCAP_3    = ( 70,91 ) Elev = 15000 SPEED = 450 HEADING = 15 CAP
+
+
+; Soviet Aircraft Paths
+
+ECAP_1    = ( 70,92 ) Elev = 15000 SPEED = 450 HEADING = 15 CAP
+
+
+Atk_1     = ( 60,05 ) Elev = 25000 SPEED = 400
+          ( 60,25 ) Elev = 15000
+          ( 60,35 ) Attack
+
+Atk_2     = ( 130,70 ) Elev = 25000 SPEED = 400
+          ( 90,70 ) Attack
+
+Atk_3     = ( 120,130 ) Elev = 25000 SPEED = 400
+          ( 100,100 ) Elev = 15000 Attack
+
+Atk_4     = ( 120,130 ) Elev = 27000 SPEED = 400
+          ( 100,100 ) Elev = 15000 Attack
+
+Atk_5     = ( 120,130 ) Elev = 28000 SPEED = 400
+          ( 100,100 ) Elev = 15000 Attack
+
+Atk_6     = ( 120,130 ) Elev = 29000 SPEED = 400
+          ( 100,100 ) Elev = 15000 Attack
+
+Fight_1   = ( 65,90 ) Elev = 15000 Speed = 550 Heading = 270
+
+Fight_2   = ( 75,90 ) Elev = 15000 Speed = 550 Heading = 180
+
+Fight_3   = ( 75,92 ) Elev = 15000 Speed = 550 Heading = 350
+
+Fight_4   = ( 65,90 ) Elev = 15000 Speed = 550 Heading = 355
+
+Fight_5   = ( 65,91 ) Elev = 15000 Speed = 550 Heading = 355
+
+Fight_6   = ( 65,92 ) Elev = 15000 Speed = 550 Heading = 355
+
+Fight_7   = ( 65,93 ) Elev = 15000 Speed = 550 Heading = 355
+
+Fight_8   = ( 65,94 ) Elev = 15000 Speed = 550 Heading = 355
+
+
+[OBJECTS]
+
+; Your Carrier Battlegroup
+
+khawka        				PATH = Carrier_1
+                              Name = Home_A
+                              Side = friendly
+
+
+
+CGa                           PATH = CGa_1
+                              Side = Friendly
+                              Number = 1,1,1,1
+
+DDGa                     	  PATH = CGa_2
+                              Side = Friendly
+                              Number = 1,1,1,1
+
+; U.S. Aircraft
+
+F-14FDa                       PATH = Player
+                              Name = You
+                              Type = Player
+
+F-14FDa                       PATH = Player
+                              Name = Wingman
+                              Type = Wingman
+
+
+F-16a                         PATH = FCAP_1
+                              Number = 1,1,1,1
+
+F-14FDb                       PATH = FCAP_2
+                              Number = 1,1,1,1
+
+
+; Soviet Ships
+
+SovCVa		PATH = S_Carrier_1
+			Name = Sov_A
+                              Number = 1,1,1,1
+
+SovCVHa		PATH = S_CGa_1
+                              Number = 1,1,1,1
+
+SovBCGa		PATH = S_CGa_2
+                              Number = 1,1,1,1
+
+SovDDGa		PATH = S_CGa_3
+                              Number = 1,1,1,1
+
+SovFFa		PATH = S_CGa_4
+                              Number = 1,1,1,1
+
+SovPTMa		PATH = S_CGa_4
+                              Number = 1,1,1,1
+
+SovLSTa		PATH = S_CGa_5
+                              Number = 1,1,1,1
+
+SovLSTa		PATH = S_CGa_6
+                              Number = 1,1,1,1
+
+SovAFSa		PATH = S_CGa_7
+                              Number = 1,1,1,1
+
+
+; Soviet Aircraft
+
+tu-126a   Path = Atk_1
+                              Number = 1,1,1,1
+
+tu-95Da   Path = Atk_6
+                              Number = 1,1,1,1
+
+su-27a	  Path = ECAP_1
+                              Number = 1,1,1,1
+
+mh-53a    Path = E_Helo_1
+                              Number = 1,1,1,1
+
+[END]

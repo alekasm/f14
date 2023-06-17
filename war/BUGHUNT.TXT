@@ -1,0 +1,54 @@
+
+;   Scenario 1 Msn2 BEAR HUNTING
+
+[WORLD]
+NORTHCAPE
+[TIME]
+09:00
+[WEATHER]
+OVERCAST
+[LOADOUT]
+FD_BRAVO
+[BRIEFING]
+Search for the BUG
+
+[PATHS]
+CARRIER_1 = ( 223,182) SPEED = 30  HEADING = 0
+;CGa_1     = ( 223,183 ) Speed = 30 Heading = 0
+;CGa_2     = ( 223,181 ) Speed = 30 Heading = 0
+
+CAP_2 = ( 224,165) ELEVATION 20000 SPEED = 300 CAP HEADING=270
+;CAP_3 = ( 223,165) ELEVATION 20000 SPEED = 300 CAP HEADING=270
+
+PLAYER = ( HOME_A ) ELEVATION 1 SPEED = 0 CAP HEADING=0
+
+
+[OBJECTS]
+KHAWKA       PATH = CARRIER_1
+             NAME = HOME_A
+
+F/A-18A      PATH = PLAYER
+              NAME = YOU
+              TYPE = PLAYER
+              CALLSIGN = CHARLIE
+
+;MiG-31a		Path = CAP_3
+;			Number = 2
+
+F/A-18A      PATH = CAP_2
+             NUMBER = 2
+
+;F/A-18A      PATH = CAP_3
+;             NUMBER = 1
+
+
+;CGa          PATH = CGa_1
+;             Side = Friendly
+;             Number = 2
+
+;CGa          PATH = CGa_2
+;             Side = Friendly
+;             Number = 2
+
+
+[end]

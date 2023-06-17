@@ -1,0 +1,88 @@
+[DESCRIPTION]
+Radar Tesst
+
+[WORLD]
+NorthCape
+
+[TIME]
+05:30
+
+[WEATHER]
+HighSky
+
+;[CIELING]
+;65000
+
+;[LOADOUT]
+;MCAlpha
+
+[BRIEFING]
+This is a test of the AWG9 Radar system.
+
+[PATHS]
+; Surface Ships
+
+Carrier_1      = ( 70,90 ) Speed = 30 Heading = 0
+
+;U.S. Aircraft Paths
+
+Player    = ( Home_A ) Elev = 1 SPEED = 0 HEADING = 0 Launch
+
+;F_Flight1  =  ( 70,90 ) Elev = 1000 SPEED = 550 HEADING = 0
+
+F_Flight1  =  ( 70,40 ) Elev = 1000 SPEED = 550 HEADING = 180
+F_Flight2  =  ( 70,70 ) Elev = 15000 SPEED = 550 HEADING = 180
+
+r_test1  =  ( 70,70 ) Elev = 10000 SPEED = 550 HEADING = 180
+
+r_test2  =  ( 72,70 ) Elev = 10000 SPEED = 550 HEADING = 180
+			( Home_A ) Attack
+r_test3  =  ( 68,70 ) Elev = 10000 SPEED = 550 HEADING = 180
+			( Home_A ) Attack
+r_test4  =  ( 70,68 ) Elev = 10000 SPEED = 550 HEADING = 180
+			( Home_A ) Attack
+r_test5  =  ( 74,72 ) Elev = 10000 SPEED = 550 HEADING = 180
+			( Home_A ) Attack
+r_test6  =  ( 66,72 ) Elev = 10000 SPEED = 550 HEADING = 180
+			( Home_A ) Attack
+
+[OBJECTS]
+
+; Your Carrier Battlegroup
+
+khawka        		PATH = Carrier_1
+                        Name = Home_A
+                        Side = Friendly
+
+F-14FDA                 PATH = Player
+                        Name = You
+                        Type = Player
+
+;F-14FDA			PATH = F_Flight2
+;			Number = 1,1,1,1
+
+;F-14FDA			PATH = F_Flight3
+;			Number = 1,1,1,1
+
+;F-14FDA			PATH = F_Flight1
+;			Number = 1,1,1,1
+
+
+su-24a		PATH = r_test1
+			Number = 1,1,1,1
+Tu-95Ga		PATH = r_test2
+			Number = 1,1,1,1
+Tu-95Ga		PATH = r_test3
+			Number = 1,1,1,1
+Tu-95Ga		PATH = r_test4
+			Number = 1,1,1,1
+Tu-95Ga		PATH = r_test5
+			Number = 1,1,1,1
+Mig-31a			PATH = r_test6
+			Number = 1,1,1,1
+
+
+;tu-95Da			PATH = F_Flight1
+;			Number = 1,1,1,1
+
+[END]

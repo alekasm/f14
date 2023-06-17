@@ -1,0 +1,105 @@
+;
+;
+;       Scenario I  Mission 4 - Intercept Bombers
+;
+
+[world]
+NorthCape
+
+[time]
+10:24
+
+[weather]
+overcast
+
+[loadout]
+fd_bravo
+
+
+[briefing]
+        Soviet reconnaissance satellites have detected our retreating
+        balletgroup.  A strike package of Tu-16 "Badger" and Tu-22M
+        "Backfire" aircraft is assembling to attack the carrier.  These
+        bombers carry the deadly AS-6 "Kingfish" missile.  A salvo of
+        these missiles could destroy the battlegroup in an unguarded
+        moment.
+
+[paths]
+
+carrier_2 =     ( 55, 122 )  speed=34
+                ( 55, 100 )
+
+carrier_1 =     ( 132, 110 ) speed=39
+                ( 150, 86 )
+
+sov_carrier =   ( 155, 68 )  speed=36 heading=45511
+
+backfire_1 =    ( 110, 62 )  elevation=35000 speed=380
+                ( 55, 112 )  attack	
+		
+
+
+backfire_2 =    ( 80, 59 )   elevation=35000 speed=400
+                ( 65, 60 )
+                ( 50, 71 )   elevation=10000 speed=425
+                ( 40, 88 )
+                ( 47, 100 )  attack     ; cruise_miss ?
+
+badger_1 =      ( 70, 54 )   elevation=40000 speed=340
+                ( 50, 61 )   elevation=8000
+                ( 45, 90 )   elevation= 12000
+                ( home )     attack
+
+
+hawkeye =       ( 65, 103 )  elevation=40000 speed=220 awacs
+
+cap_1 =         ( 75, 125 )  elevation=18000 speed=340 cap
+
+cap_2 =         ( 75, 105 )  elevation=22000 speed=360 cap
+
+cap_3 =         ( 55, 95 )   elevation=23000 speed=320 cap
+
+
+player =        ( home )     launch
+                ( 55, 110 )  speed=450 elevation=8000
+                ( home )
+
+[objects]
+
+carrier         path=carrier_1
+                name=otherGuy
+
+carrier         path=carrier_2
+                name=home
+
+carrier         path=sov_carrier
+                side=enemy
+
+f14             path=player
+                name=you
+                type=player
+                callsign=dingdong
+
+f14             path=player
+                name=wingman
+                type=wingman
+                callsign=bravo
+
+f14             path=cap_1
+                number=2
+
+f14             path=cap_2
+                number=2
+
+f14             path=cap_3
+                number=2
+
+tu22m           path=backfire_1
+
+tu22m           path=backfire_2
+
+tu95            path=badger_1
+
+awacs           path=hawkeye
+
+[end]

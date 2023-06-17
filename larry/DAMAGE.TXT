@@ -1,0 +1,25 @@
+Damage Table
+-----------------------------------
+0  - None
+1  - Light Guns
+2  - Med Guns
+3  - Heavy Guns
+4  - Real Heavy Guns
+
+10 - Small warhead
+11 - Med warhead
+12 - Large warhead
+13 - Very large warhead
+14 - Huge warhead
+15 - Very large warhead
+
+30 - Small Bomb
+31 - Med Bomb
+32 - Large Bomb
+33 - Very Large Bomb
+34 - Huge Bomb
+35 - Very Huge Bomb
+
+70 - Small Nuke
+72 - Med Nuke
+74 - Big O'l Nuke

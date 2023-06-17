@@ -1,0 +1,209 @@
+;
+;        qs-def.txt
+;
+
+[WORLD]
+(null)
+
+[BRIEFING]
+none 
+
+[DESCRIPTION]
+instant offense
+
+[TIME]
+19:37
+
+[WEATHER]
+highclouds
+
+[CEILING]
+45000
+
+[LOADOUT]
+fd_charlie
+
+[stations]
+; there are 2 stations
+
+[PATHS]
+       0 =	(      128,      148 ) speed=30 heading=0 
+		
+       1 =	(      128,      128 ) speed=400 heading=0 
+		(       -1,        7 ) 
+		(       -1,        0 ) land 
+		
+       2 =	(      128,      125 ) speed=400 heading=0 
+		(       -1,        7 ) 
+		
+       3 =	(      128,      129 ) speed=400 heading=0 
+		(       -1,        1 ) 
+		
+
+
+[Objects]
+
+nimitza		loc=(      128,      148 )
+		elevation=-1
+		speed=-1
+		type=-1
+		name=Carrier
+		formation=-1
+		side=friendly
+		path=0
+		damageLevel=0
+		number=1, 1, 1, 1
+		quality=2, 2, 2, 2
+		station = 0
+
+f-14fda		loc=(      128,      128 )
+		elevation=10500
+		speed=-1
+		type=player
+		name=You
+		formation=-1
+		side=friendly
+		path=1
+		damageLevel=0
+		number=1, 1, 1, 1
+		quality=2, 2, 2, 2
+		station = 0
+
+f-14fda		loc=(      128,      128 )
+		elevation=10500
+		speed=-1
+		type=wingman
+		name=Wingman
+		formation=-1
+		side=friendly
+		path=1
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=2, 2, 2, 2
+		station = 0
+
+f-14fdb		loc=(      128,      125 )
+		elevation=10500
+		speed=-1
+		type=cap
+		formation=wall
+		side=friendly
+		path=2
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=0, 0, 0, 4
+		station = 0
+
+f-14fdb		loc=(      128,      125 )
+		elevation=10500
+		speed=-1
+		type=cap
+		formation=wall
+		side=friendly
+		path=2
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=0, 0, 0, 4
+		station = 0
+
+f-14fdb		loc=(      128,      125 )
+		elevation=10500
+		speed=-1
+		type=cap
+		formation=wall
+		side=friendly
+		path=2
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=0, 0, 0, 4
+		station = 0
+
+f-14fdb		loc=(      128,      125 )
+		elevation=10500
+		speed=-1
+		type=cap
+		formation=wall
+		side=friendly
+		path=2
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=0, 0, 0, 4
+		station = 0
+
+su-27a		loc=(      128,      129 )
+		elevation=200
+		speed=-1
+		type=-1
+		name=george
+		formation=wall
+		side=enemy
+		path=3
+		damageLevel=0
+		number=0, 0, 0, 2
+		quality=0, 0, 0, 4
+
+su-27a		loc=(      128,      129 )
+		elevation=200
+		speed=-1
+		type=-1
+		name=george
+		formation=wall
+		side=enemy
+		path=3
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=0, 0, 0, 4
+
+su-27a		loc=(      128,      129 )
+		elevation=200
+		speed=-1
+		type=-1
+		name=george
+		formation=wall
+		side=enemy
+		path=3
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=0, 0, 0, 4
+
+su-27a		loc=(      128,      129 )
+		elevation=200
+		speed=-1
+		type=-1
+		name=george
+		formation=wall
+		side=enemy
+		path=3
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=0, 0, 0, 4
+
+su-27a		loc=(      128,      129 )
+		elevation=200
+		speed=-1
+		type=-1
+		name=george
+		formation=wall
+		side=enemy
+		path=3
+		damageLevel=0
+		number=0, 0, 0, 0
+		quality=0, 0, 0, 4
+
+(null)		loc=(        2,        8 )
+		elevation=8
+		speed=2
+		type=(null)
+		name=
+		callSign=
+		formation=cap
+		side=friendly
+		path=0
+		damageLevel=0
+		number=-1, 255, 255, 255
+		survive=0, 0, 255, 255
+		quality=0, 0, 0, 9
+		station = 4770
+
+[ground_targets]
+

@@ -1,0 +1,56 @@
+[DESCRIPTION]
+Radar Tesst
+
+[WORLD]
+NorthCape
+
+[TIME]
+08:30
+
+[WEATHER]
+HighSky
+
+;[CIELING]
+;65000
+
+;[LOADOUT]
+;MCAlpha
+
+[BRIEFING]
+This is a test of the AWG9 Radar system.
+
+[PATHS]
+; Surface Ships
+
+Carrier_1      = ( 70,90 ) Speed = 30 Heading = 0
+
+;U.S. Aircraft Paths
+
+Player    = ( 70,41 ) Elev = 10000 SPEED = 350 HEADING = 0
+
+F_Flight1  =  ( 70,40 ) Elev = 10000 SPEED = 350 HEADING = 0
+
+;F_Flight2  =  ( 71,40 ) Elev = 10000 SPEED = 350 HEADING = 0
+
+[OBJECTS]
+
+; Your Carrier Battlegroup
+
+khawka        		PATH = Carrier_1
+                        Name = Home_A
+                        Side = Friendly
+
+F-14FDA                 PATH = Player
+                        Name = You
+                        Type = Player
+
+Mig-31a			PATH = F_Flight1
+			Number = 1,1,1,1
+			side=enemy
+
+
+;tu-95Da			PATH = F_Flight2
+;			Number = 1,1,1,1
+;			Side = Friendly
+
+[END]

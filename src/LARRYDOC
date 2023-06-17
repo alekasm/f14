@@ -1,0 +1,80 @@
+Missile/Bomb Class			Gun Class (0-3)
+-------------------------		-------------	
+NONE    0				0 - None
+SA2     1				1 - Both
+SA3     2				2 - Front
+SA5     3				3 - Back
+
+HAWK    4				Radar Signature(Size) (0-4)
+SA6     5				---------------------
+SA8     6				0 - Very Small
+SKYGRD  7				1 - Small
+ROLAND  8				2 - Medium
+SA7     9				3 - Large
+SA13    10				4 - Very Large
+SA14    11
+GUN_1   12				Aircraft Alignment (0-3)
+GUN_2   13				---------------------
+GUN_3   14				0 - Nuetral
+GUN_4   15				1 - Friendly
+GUN_5   16				2 - Enemy
+AA2C    17				3 - Civilian
+AA2D    18				
+AA6     19				ECM(Jamming) (0-3)
+AA7     20				---------------------
+AA8     21				0 - None
+AA10A   22				1 - Weak
+AA10B   23				2 - Medium
+AA10C   24				3 - Strong
+AA11    25
+MAGIC   26
+R530    27				Maneuver Rate (1-5)
+HARM    28				---------------------
+HARPOON 29				1 - Like a Rock (B-52)
+SLAM    30				2 - Better than a Rock (A7E)
+AGM65   31				3 - Not Bad (MIG-23)
+GBU15   32				4 - Getting Better (MIG-31)
+LGBOMB  33				5 - Great (MIG-29, F-16)
+RTBOMB  34
+FFBOMB  35
+AIM7M   36
+AIM9M   37
+AIM120  38
+AIM54A	39
+AS4     40
+AS6     41
+
+
+Radar Class
+-------------------------
+R_NONE    0
+R_GCI     1
+R_SAMRDR  2
+R_SA2B    3
+R_SA3B    4
+R_SA5B    5
+R_HAWK    6
+R_SA6B    7
+R_SA8B    8
+R_MBOAT   9
+R_SKYGRD  10
+R_ROLAND  11
+R_SA9     12
+R_SA13    13
+R_ZSU23   14
+R_ZSU57   15
+R_SKYAA   16
+R_CITY1AA 17
+R_AAGUN   18
+R_TANKS   19
+R_AWACS   20
+R_IL76    21
+R_MIG23   22
+R_MIG29   23
+R_MIG21   24
+R_F16     25
+R_SU17C   26
+R_SHORN   27
+R_PUFF    28
+R_WETI    29
+

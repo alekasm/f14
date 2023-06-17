@@ -1,0 +1,277 @@
+;
+; FIGHTING WITHDRAWAL #1 Box 1a Testing the Waters
+;
+
+[DESCRIPTION]
+T16Srch
+
+[WORLD]
+NorthCape
+
+[TIME]
+07:30
+
+[WEATHER]
+HighClouds
+
+[CEILING]
+35000
+
+[LOADOUT]
+fd_alpha
+
+[BRIEFING]
+TESTING THE WATERS: Outstanding mission! Your success at stopping the surprise attack has
+cost the Soviets their best chance at destroying our carrier. Now, having been alerted to the
+danger we will be in a much better position to defend against such attacks in the future. The
+Soviets have also lost valuable time, time they can't afford to lose if they are to remain on
+schedule. Tu-16L "Badger" ELINT aircraft are patrolling at the outer edges of our radar
+coverage. They are trying to locate our carrier by detecting our transmissions. These
+electronic snoopers must be intercepted before they pinpoint our carrier.
+
+To win this mission you and your wingman must shoot down at least three (3) Tu-16L
+"Badgers"
+
+[STATIONS]
+
+station = Our_Carrier
+station = Their_Carrier
+
+[PATHS]
+
+; U.S Surface Ship Paths
+
+Carrier_1       = ( 65,45 ) Speed = 30 Heading = 0
+
+CGa_1 	= ( 20,47 ) Speed = 30 Heading = 0
+
+CGa_2 	= ( 20,49 ) Speed = 30 Heading = 0
+              	( OURGUYS ) Form_On
+
+
+;  U.S. Aircraft Paths
+
+Player	= ( Carrier ) Launch waypoint
+		  ( 85,50 ) Elevation = 20000 Land
+
+LANDERS1   = ( 65,47 ) Elev = 10000 Speed = 300 Heading = 0 Waypoint Land
+		  ( Carrier ) Land
+
+LANDERS   = ( 65,46 ) Elev = 10000 Speed = 300 Heading = 180 Waypoint Land
+		  ( Carrier ) Land
+
+LAUNCHERS = ( Carrier ) Launch
+		  ( 85,54 ) Land
+
+LAUNCHERS2 = ( Carrier ) Launch
+			( 85,54 ) Elevation = 5000 Speed = 400 Formation = combatspread
+		  ( 85,54 ) Land
+
+FORMERS   = ( 125,45 ) Elev = 30000 Speed = 300 Formation = Parade
+
+FORMERS2  = ( 145,45 ) Elev = 30000 Speed = 300
+
+FORMERS3  = ( 145,85 ) Elev = 30000 Speed = 300
+		  ( SMOKEY ) Form_On
+
+JUNKCAP = ( Carrier ) Launch
+		  ( 145,130 ) Elevation = 15000 Speed = 500 Heading = 120 CAP
+
+ENEMY 	= ( 125,45 ) Elev = 20000 Speed = 400 Heading = 0 OFFENSIVEBFM
+
+CARR_STATION = ( Carrier ) Launch
+			( Carrier ) Form_On Formation = bomber_formation
+
+
+BGROUP = ( Carrier ) Launch
+		 ( 145,45 ) Speed = 300 Elevation = 20000
+
+;Buzzers = ( 65,47 ) Formation = Parade Elevation = 100 Speed = 700 Heading = 0
+;		( Carrier )
+;		{ 5,-10 }:Carrier Elevation = 5000
+;		( Carrier ) Land
+
+DOLADDER = ( 145,120 ) Formation = Ladder Elevation = 20000 Speed = 400 Heading = 90
+
+TEMP1 = ( 60,120 ) Elevation = 20000 Speed = 400
+
+TEMP2 = ( 80,120 ) Elevation = 20000 Speed = 400
+
+TEMP2FOLLOW = ( 80,122 ) Elevation = 20000 Speed = 400
+			  ( STIMPY ) Form_On
+
+TEMP3 = ( 100,120 ) Elevation = 20000 Speed = 400
+
+TEMP4 = ( 120,120 ) Elevation = 20000 Speed = 400
+
+TEMP5 = ( 140,120 ) Elevation = 20000 Speed = 400
+
+[OBJECTS]
+; U.S. Surface Ships
+
+Nimitza                 PATH = Carrier_1
+                            	Name = Carrier
+                          	Side = Friendly
+			Station = Our_Carrier
+
+CGa                     PATH = CGa_1
+			Name = OURGUYS
+                        Side = Friendly
+                        Number = 2,2,2,2
+			Station = Our_Carrier
+
+DDGa                   	PATH = CGa_2
+			Name = Destroyer
+                        Side = Friendly
+                        Number = 1,1,1,1
+			Station = Our_Carrier
+
+
+; U.S. Aircraft
+
+F-14MCA			PATH = LANDERS1
+			Side = FRIENDLY
+			Number = 2, 2, 2, 2
+
+F-14FDa                   	PATH = Player
+                            	Name = You
+                            	Type = Player
+			Station = Our_Carrier
+
+F-14FDa                   	PATH = Player
+                            	Name = Wingman
+                            	Type = Wingman
+			Station = Our_Carrier
+
+SH-60a                  PATH = CARR_STATION
+			Name = RESCUE_HELO
+                        Number = 1,1,1,1
+			Station = Our_Carrier
+
+F-14FDb			PATH = JUNKCAP
+			Side = FRIENDLY
+			Number = 2, 2, 2, 2
+
+F-14FDa			PATH = LAUNCHERS2
+			Side = FRIENDLY
+			Number = 4, 4, 4, 4
+
+F/A-18d			PATH = BGROUP
+				Side = FRIENDLY
+				Number = 2, 2, 2, 2
+
+F-14FDa		PATH = LAUNCHERS
+			Side = FRIENDLY
+			Number = 2, 2, 2, 2
+
+F-14MCA			PATH = FORMERS
+			Side = FRIENDLY
+			Number = 4, 4, 4, 4
+
+Tu-95Da			PATH = FORMERS2
+			Name = SMOKEY
+			Side = FRIENDLY
+			Number = 1, 1, 1, 1
+
+F/A-18a			PATH = FORMERS3
+			Side = FRIENDLY
+			Number = 2, 2, 2, 2
+
+F/A-18a			PATH = Launchers
+			Side = FRIENDLY
+			Type = Ready_5
+			Number = 2, 2, 2, 2
+
+Mig-21a			PATH = DOLADDER
+			Side = FRIENDLY
+			Number = 4, 4, 4, 4
+
+A-6Ea		PATH = TEMP1
+			Side = FRIENDLY
+			Number = 1, 1, 1, 1
+
+Tu-22Ma     PATH = TEMP2
+			Side = FRIENDLY
+			NAME = STIMPY
+			Number = 1, 1, 1, 1
+
+MiG-29a     PATH = TEMP2FOLLOW
+			Side = FRIENDLY
+			Number = 1, 1, 1, 1
+
+dc-10a		PATH = TEMP3
+			Side = FRIENDLY
+			Number = 1, 1, 1, 1
+
+;F-14FDb		PATH = Buzzers
+;			Side = FRIENDLY
+;			Number = 4, 4, 4, 4
+
+;F-5a			PATH = ENEMY
+;			Side = ENEMY
+
+; Ground Target Coordinates
+; Norwegian Airfields
+
+[ground_targets]
+
+GT		Name = Bodo
+;		Type = Airport
+		Side = Friendly
+		Location = ( 103,184 )
+
+GT		Name = Andoya
+;		Type = Airport
+		Side = Friendly
+		Location = ( 125,137 )
+
+GT 		Name = Banak
+;		Type = Airport
+		Side = Friendly
+		Locaton = ( 184,111 )
+
+GT		Name = Bardufoss
+;		Type = Airport
+		Side = Friendly
+		Location = ( 139,139 )
+
+GT		Name = Orland
+;		Type = Airport
+		Side = Friendly
+		Location = ( 79,225 )
+
+; Other Targets
+
+GT		Name = Murmansk
+		Type = Ground_Target
+		Location = ( 228,126 )
+
+GT		Name = Severomorsk
+		Type = Ground_Target
+		Location = ( 225,123 )
+
+GT 		Name = Pechenga
+		Type = Ground_Target
+		Location = ( 212,130 )
+
+GT		Name = Kirkenes_Roadblock
+ 		Type = Ground_Target
+		Location = ( 200,114 )
+
+GT		Name = Narvik_Port
+		Type = Ground_Target
+		Location = ( 121,155 )
+
+GT		Name = Sub_Pens
+	 	Type = Ground_Target
+		Location = ( 217,119 )
+
+GT		Name = Industrial_Plant
+		Type = Ground_Target
+		Location = ( 228,126 )
+
+GT 		Name = Polyarnnyy
+		Type = Ground_Target
+		Location = ( 221,120 )
+
+[END]

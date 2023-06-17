@@ -1,0 +1,108 @@
+
+;   Scenario 1 Msn2 BEAR HUNTING
+
+[WORLD]
+NORTHCAPE
+[TIME]
+09:00
+[WEATHER]
+OVERCAST
+[LOADOUT]
+FD_BRAVO
+[BRIEFING]
+  YOU AND YOUR WINGMAN MUST LOCATE AND DESTROY THE FOUR-ENGINED TU-95
+  "BEARS" BEFORE THEY CAN GET AN ELECTRONIC FIX ON OUR BATTLEGROUP.  THESE
+  SOVIET HIGH-FLYERS HAVE BUT ONE MISSION IN LIFE AND THAT IS TO PIN-POINT
+  OUR SHIPS SO THQT OTHER BOMBERS CAN ATTACK THEM.
+
+[PATHS]
+CARRIER_1 = ( 127,136 ) SPEED = 30  HEADING = 0
+BOAT2 = ( 224,182) SPEED = 40 HEADING = 0
+	( HOME_A ) Form_On
+BOAT3 = ( 225,182) SPEED = 40 HEADING = 0
+	( HOME_A ) Form_On
+PLAYER = ( HOME_A ) ELEVATION 1 SPEED = 0 CAP HEADING=0
+CAP_2 = ( 223,175) ELEVATION 20000 SPEED = 300 CAP HEADING=90
+CAP_3 = ( 85,65) ELEVATION 20000 SPEED = 300 CAP HEADING=270
+CAP_4 = ( 85,67) ELEVATION 20000 SPEED = 300 CAP HEADING=270
+
+HAWKEYE_1 = ( 223,14) ELEVATION= 500 SPEED = 700 AWACS HEADING=180
+         ( HOME_A ) ELEVATION = 500 SPEED = 700
+         ( 223,147 ) ELEVATION = 1000 SPEED = 700
+         ( HOME_A ) ELEVATION = 500 SPEED = 700
+BEAR_CAP = ( 223,112) ELEVATION 20000 SPEED = 300 CAP HEADING=270
+EASY_TARG = ( HOME_A ) ELEVATION 500 SPEED=300 HEADING=0
+
+CGa_1     = ( 127,135 ) Speed = 30 Heading = 0
+
+Helo_1	  = ( 127,135 ) Speed = 30 Heading = 0 ELEVATION=300
+
+CGa_2     = ( 129,135 ) Speed = 30 Heading = 0
+
+
+DEMO_1    =  ( 127,140 ) SPEED = 500 ELEVATION=15000 HEADING = 0
+
+DEMO_2    =  ( 127,145 ) SPEED = 500 ELEVATION=15000 HEADING = 0
+
+DEMO_3    =  ( 127,150 ) SPEED = 500 ELEVATION=15000 HEADING = 0
+
+
+[OBJECTS]
+KHAWKA       PATH = CARRIER_1
+             NAME = HOME_A
+
+F/A-18A      PATH = PLAYER
+             NAME = YOU
+             TYPE = PLAYER
+             CALLSIGN = CHARLIE
+
+CGa          PATH = CGa_1
+             Side = Friendly
+             Number = 2,2,2,2
+
+DDGa         PATH = CGa_2
+             Side = Friendly
+             Number = 1,1,1,1
+
+mi-8a     	 Path = helo_1
+			 Side = Friendly
+          	 Number = 1,1,1,1
+
+F-14FDA      PATH = PLAYER
+             NAME = DUDE
+             TYPE = WINGMAN
+             CALLSIGN = CHARLIE
+
+F-14FDA		 PATH = CAP_4
+			 Side = Friendly
+			 NUMBER = 2,2,2,2
+VIGGENA      PATH = CAP_2
+			 Side = Friendly
+             NUMBER = 2,2,2,2
+F-5A         PATH = EASY_TARG
+			 Side = Friendly
+             NUMBER = 1,1,1,1
+			 SIDE = FRIENDLY
+F/A-18A      PATH = CAP_3
+			 Side = Friendly
+             NUMBER = 2,2,2,2
+E-2CA        PATH = HAWKEYE_1
+			 Side = Friendly
+             NUMBER = 1,1,1,1
+TU-95DA      PATH = BEAR_CAP
+			 Side = Friendly
+             NUMBER = 2,2,2,2
+
+Mig-21a		 PATH = DEMO_1
+			 Side = Friendly
+			 Number = 2,2,2,2
+
+Mig-23a		 PATH = DEMO_2
+			 Side = Friendly
+			 Number = 2,2,2,2
+
+Mig-25a		 PATH = DEMO_3
+			 Side = Friendly
+			 Number = 4,4,4,4
+
+[end]

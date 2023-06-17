@@ -1,0 +1,251 @@
+; FIGHTING WITHDRAWAL #1 Box 0a  Surprise Attack
+
+
+[DESCRIPTION]
+SuprAtk
+
+[WORLD]
+NorthCape
+
+[TIME]
+05:30
+
+[WEATHER]
+HighClouds
+
+[CIELING]
+45000
+
+[LOADOUT]
+MCAlpha
+
+[BRIEFING]
+SURPRISE ATTACK: Our carrier battlegroup has been surprised by the sudden outbreak 
+of war. NATO ground troops in central Europe are falling back under heavy Soviet 
+pressure. The same is true at sea. Everywhere our ships have been forced to retreat out 
+of "harm's way." High over the North Cape numerous "Short Horn" search radars have 
+suddenly illuminated our ships. This can only mean one thing, a flight of Tu-16G 
+"Badgers" is preparing to launch a salvo of AS-5 "Kelt" anti-ship missiles. You are 
+ordered to intercept these bombers before they can make their attack.
+
+To win this mission you (and your wing-man) must shoot down a combined total of 6 or 
+more incoming bombers.  
+
+[PATHS]
+
+; Surface Ships
+ 
+SovCVHa_1 	= ( 195, 65 ) Speed = 30 Heading = 255
+
+SovCGa_1 	= ( 196, 66 ) Speed = 30 Heading = 255
+                   	( Kiev ) Form_On
+
+SovBCGa_1 	= ( 198, 89 ) Speed = 30 Heading = 270
+
+SovCGa_2 	= ( 198, 90 ) Speed = 30 Heading = 270
+                   	( Kirov ) Form_On
+
+Carrier_1 	= ( 85, 65 ) Speed = 30 Heading = 195
+
+CGa_1 	= ( 85, 66 ) Speed = 30 Heading = 195
+              	( Carrier ) Form_On
+
+;  U.S. Aircraft Paths
+
+Hawkeye 	= ( 90, 60 ) Elev = 25000 Spd = 225 AWACS
+
+Player 	= ( Home A ) Elev = 1 Spd = 0 Launch
+                	( 125, 70 ) Elev = 15000 Spd = 400 CAP 
+                	(Home A ) Land
+
+FCAP_1 	= ( 85, 45 )  Elev = 15000 Spd = 400 Hdg = 10 CAP 
+
+FCAP_2 	= ( 85, 105 )  Elev = 15000 Spd = 400 Hdg = 180 CAP
+ 
+FCAP_3	 = ( 50, 75 )  Elev = 15000 Spd = 400 Hdg = 270 CAP
+
+FHELO_1	= ( 95, 65 )  Elev = 2000 Spd = 80 Hdg =90 CAP
+
+;  Soviet Aircraft Paths
+
+ESRCH_1 	= ( 145, 40 ) Elev = 35000 Spd = 450 Hdg = 270
+                   	( 95, 40 ) Elev = 35000 Spd = 450 Hdg = 205
+
+ERSCH_2 	= ( 175, 85 ) Elev = 35000 Spd = 450 Hdg = 270
+                   	( 115, 85 ) Elev = 35000 Spd = 450 Hdg = 205
+
+EJAM_1 	= ( 175, 55 ) Elev = 20000 Spd = 450 Hdg = 270
+                  	( 115, 55 ) Elev = 35000 Spd = 450 Hdg = 205
+
+EJAM_2 	= ( 185, 95 ) Elev = 25000 Spd = 450 Hdg = 270
+                  	( 115, 95 ) Elev = 35000 Spd = 450 Hdg = 205
+
+EATK_1 	= ( 190, 40 ) Elev = 30000 Spd = 400 Hdg = 270 Form = BombForm 
+                 	( 100, 35 ) attack
+ 
+EATK_2 	= ( 190, 55 ) Elev = 30000 Spd = 400 Hdg = 270 Form = BombForm
+                 	( 110, 45 ) attack 
+
+EATK_3 	= ( 190, 65 ) Elev = 30000 Spd = 400 Hdg = 270 Form = BombForm
+                 	( 100, 75 ) attack
+ 
+EATK_4 	= ( 190, 80 ) Elev = 30000 Spd = 400 Hdg = 270 Form = BombForm
+                 	( 90, 125 ) attack
+
+ECAP_1	= ( 186, 45 ) Elev = 1500 Heading = 255 CAP
+
+ECAP_2	= ( 178, 85 ) Elev = 1000 Heading = 255 CAP
+
+
+; Mission Standard Environment Entries
+
+FMSE_1	= ( 75, 145 ) Elev = 3000 Spd = 350 Hdg = 40
+
+FMSE_2 	= ( 65, 200 ) Elev = 1500 Spd = 350 Hdg = 35 
+
+FMSE_3 	= (135, 125 ) Elev = 20000 Spd = 400 Hdg = 45 CAP
+
+EMSE_1	= ( 170, 95 ) Elev = 35000 Spd = 450 Hdg = 270
+                  	( 130, 95 ) Elev = 35000 Spd = 450 Hdg = 245
+
+EMSE_2	= ( 215, 105 ) Elev = 35000 Spd = 250 Hdg = 90 AWACS
+
+EMSE_3	= ( 200, 95 ) Elev =50000 Spd = 800
+		(145, 95 ) Hdg = 205
+
+[OBJECTS]
+
+; Your Carrier Battlegroup
+
+Carrier  		PATH = Carrier_1
+                            	Name = Home A
+                          	Side = Friendly
+
+CGa                      	PATH = CGa_1
+                            	Side = Friendly
+                            	Number = 2
+
+DDGa                   	PATH = CGa_1
+                            	Side = Friendly
+                            	Number = 3
+
+; U.S. Aircraft
+
+F-14a                   	PATH = Player
+                            	Name = You
+                            	Type = Player
+
+F-14a                   	PATH = Player
+                            	Name = Wingman
+                            	Type = Wingman
+
+E-2Ca                   	PATH= Hawkeye
+                            	Side = Friendly
+                            	Number = 1
+
+F-14b                   	PATH = FCAP_1
+                            	Number = 2
+
+F-14b                   	PATH = FCAP_2
+                            	Number = 2
+
+F-14b                   	PATH = FCAP_3
+                            	Number = 2
+
+SH-2a			PATH = FHELO_1
+                            	Number = 1
+
+; Soviet Carrier Group
+
+SovCVHa               	PATH = SovCVHa_1
+                              	Name = Kiev
+                              	Side = Enemy
+
+SovCGa                 	PATH = SovCGa_1
+                              	Side = Enemy
+                             	Number = 2
+
+SovDDGa                	PATH = SovCGa_1
+                             	Side = Enemy
+                             	Number = 2
+
+;  Soviet Surface Action Group
+
+SovBCGa                	PATH = SovBCGa_1
+                             	Name= Kirov
+                             	Side = Enemy
+
+SovCGa                  	PATH = SovCGa_2
+                             	Side = Enemy
+
+SovDDGa              	PATH = SovCGa_2
+                             	Side = Enemy
+
+; Soviet Aircraft
+
+Tu-95Da               	PATH = ESrch_1
+                            	Side = Enemy
+                            	Number = 1
+
+Tu-95Da               	PATH = ESrch_2
+                            	Side = Enemy
+                            	Number = 1
+
+Tu-16Ja               	PATH = EJam_1
+                            	Side = Enemy
+                            	Number = 1
+
+Tu-16Ja               	PATH = EJam_2
+                            	Side = Enemy
+                            	Number = 1
+
+Tu-16Ga               	PATH = EAtk_1
+                            	Side = Enemy
+                            	Number = 3
+
+Tu-16Ga               	PATH = EAtk_2
+                            	Side = Enemy
+                            	Number = 3
+
+Tu-16Ga               	PATH = EAtk_3
+                            	Side = Enemy
+                            	Number = 3
+
+Tu-16Ga               	PATH = EAtk_4
+                            	Side = Enemy
+                            	Number = 3
+
+Ka-25a		PATH = EHELO_1
+			Side = Enemy
+			Number = 1
+
+Ka-25a		PATH = EHELO_2
+			Side = Enemy
+			Number = 1
+
+
+; Mission Standard Environments
+
+P-3a                    	PATH = FMSE_ 1
+                           	Side = Friendly
+                           	Number = 1
+
+Nimroda              	PATH = FMSE_2
+                           	Side = Friendly
+                           	Number = 1
+
+F-16a                 	PATH = FMSE_3
+                           	Side = Friendly
+                           	Number = 2
+
+Tu-142a               	PATH = EMSE_1
+                            	Side = Enemy
+                            	Number = 1
+
+Tu-126a               	PATH = EMSE_2
+                            	Side = Enemy
+                            	Number = 1
+
+MiG-25a		PATH = EMSE_3
+			Side = Enemy
+                            	Number = 2

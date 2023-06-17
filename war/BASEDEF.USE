@@ -1,0 +1,193 @@
+;
+;       base allowable definitions for f14 mission generation
+;                                              AS OF 4 AUG 93 (WARGO)
+;
+;
+
+[worlds]                ; changes to this section must be matched by chages
+			;       to code
+
+	NorthCape
+	Africa
+	Training
+
+[sides]
+
+	friendly
+	neutral
+	enemy
+	civilian
+	unknown
+
+[weathers]
+
+	HighSky
+	HighClouds
+	Overcast
+
+
+[loadouts]
+	fd_bravo
+	mc_bravo
+	fd_alpha
+	fd_charlie
+	t_bravo
+	mc_charlie
+	mc_alph         syn=t_support
+	t_alpha
+
+
+[object_names]
+
+	mig23a          side=enemy
+	mig23b          side=enemy
+	mig23c          side=enemy
+	mig25a          side=enemy
+	mig25b          side=enemy
+	mig25c          side=enemy
+	mig29a          side=enemy
+	mig29b          side=enemy
+	mig29c          side=enemy
+	mig29k          side=enemy
+	f1              side=enemy
+	mig21a          side=enemy
+	mig21b          side=enemy
+	mig21c          side=enemy
+	mig21d          side=enemy
+	an22            side=enemy
+	an26            side=enemy
+	mig31           side=enemy
+	su27            side=enemy
+	su27k           side=enemy
+	su20a           side=enemy
+	su20b           side=enemy
+	su24            side=enemy
+	su25a           side=enemy
+	su25b           side=enemy
+	su17            side=enemy
+	tu16            side=enemy
+	tu16d           side=enemy
+	tu16e           side=enemy
+	tu16g           side=enemy
+	tu16h           side=enemy
+	tu16j           side=enemy
+	tu16l           side=enemy
+	tu22            side=enemy
+	tu22m           side=enemy
+	tu95            side=enemy
+	tu95d           side=enemy
+	tu95e           side=enemy
+	tu126           side=enemy
+	yak38a          side=enemy
+	yak38b          side=enemy
+	hind            side=enemy
+	hip             side=enemy
+	hormone         side=enemy
+	helix           side=enemy
+	haze            side=enemy
+	Be12            side=enemy
+	Il38            side=enemy
+	j22             side=enemy
+	G4              side=enemy
+	P3              side=friendly
+	S3              side=friendly
+	SH2G            side=friendly
+	sh3a            side=friendly
+	sh60            side=friendly
+	mh53            side=friendly
+	gr1             side=friendly
+	mk3             side=friendly
+	nimrod          side=friendly
+	c130            side=friendly
+	a6a             side=friendly
+	a6b             side=friendly
+	awacs           side=friendly
+	f14             side=friendly
+	f16             side=friendly
+	f18             side=friendly
+	f111            side=friendly
+	ka6             side=friendly
+	f5              side=neutral
+	f16b             side=neutral
+	viggen          side=neutral
+	RAFT            SIDE=FRIENDLY
+	TARGET          SIDE=NEUTRAL
+	trawler         side=enemy
+	carrier         side=friendly
+	kitchen         side=enemy
+	kingfish        side=enemy
+
+[formations]
+	bomber_formation
+	parade
+	cruise
+	combatspread
+	ladder
+	box
+	wall
+	cap
+	strike
+
+[object_definitions]
+	callsign
+	elevation       syn=elev
+	form
+	goal*
+	heading
+	location
+	number
+	name
+	path
+	speed
+	side
+	type
+
+[path_actions]          ; changes to this section must be matched by changes
+			;       to code
+; definitions with stars do not require an equals (=######)
+; they are self contained descriptions
+
+; definitions with a + require the value right of the equals to be matched
+;       against the path list for a path name.  Path name must occure before
+;       path with +
+
+
+	cap*
+	formation       syn=form
+	waypoint*
+	gorillabomb*
+	refuel*
+	cruise_miss*
+	sar*
+	sar_cap*
+	gorilla_cover*
+	waypoint_escortable*
+	awacs*
+	get_fuel*
+	elevation       syn=elev
+	speed
+	attack*
+	hawkeye+
+	launch*
+	heading
+	form_on*
+	damage*
+	ditch*
+	explode*
+	trooperdrop*
+
+
+[types]
+
+	player                  side=friendly
+	wingman                 side=friendly
+	carrier                 side=unknown
+	plane                   side=unknown
+	boat                    side=unknown
+	hostile                 side=unknown
+	damaged                 side=unknown
+	nofire                  side=unknown
+	ready_5                 side=unknown
+
+
+[end]

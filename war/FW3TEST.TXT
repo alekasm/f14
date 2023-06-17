@@ -1,0 +1,132 @@
+[DESCRIPTION]
+Furball
+
+[WORLD]
+NorthCape
+
+[TIME]
+08:30
+
+[WEATHER]
+HighSky
+
+;[CIELING]
+;65000
+
+[LOADOUT]
+fd_alpha
+
+[BRIEFING]
+This is a test. For the next sixty seconds you will be
+testing whether or not a Furball can actual happen in FLEET
+DEFENDER.
+
+
+[PATHS]
+; Surface Ships
+
+Carrier_1      = ( 70,90 ) Speed = 30 Heading = 0
+
+
+;U.S. Aircraft Paths
+
+Player    = ( Home_A ) Elev = 1 SPEED = 0 HEADING = 0 Launch
+
+LAUNCH_1  = ( Home_A ) FORMATION = PARADE Launch
+			( 70,50 ) Elev = 10000 SPEED = 300
+
+FCAP_1    = ( 70,90 ) Elev = 8000 SPEED = 450 HEADING = 15 CAP
+
+FCAP_2    = ( 70,91 ) Elev = 5000 SPEED = 450 HEADING = 90 CAP
+
+FCAP_3    = ( 69,92 ) Elev = 4000 SPEED = 450 HEADING = 15 CAP
+
+FCAP_4    = ( 70,92 ) Elev = 25000 SPEED = 450 HEADING = 15 CAP
+
+F_Flight1  =  ( 80,91) Elev = 15000 SPEED = 450 HEADING = 180
+F_Flight2  =  ( 80,92) Elev = 15000 SPEED = 450 HEADING = 180
+F_Flight3  =  ( 79,90) Elev = 15000 SPEED = 450 HEADING = 180
+
+F_Flight4  =  ( 70,102) Elev = 8000 SPEED = 450 HEADING = 180 CAP
+
+F_Flight5  =  ( 30,90) Elev = 10000 SPEED = 450 HEADING = 180
+
+F_Flight6  =  ( Home_A ) Elev = 1 SPEED = 0 HEADING = 0
+
+
+F_Helo1  =  ( 70,91 ) Elev = 100 SPEED = 30 HEADING = 0
+F_Helo2  =  ( 71,90 ) Elev = 50 SPEED = 30 HEADING = 0
+
+
+; Soviet Aircraft Paths
+
+Atk_1     = ( 60,05 ) Elev = 15000 SPEED = 400 HEADING = 0 FORMATION = PARADE
+Atk_2     = ( 60,05 ) Elev = 15000 SPEED = 400 HEADING = 0
+			( BEAR ) Form_On
+
+Atk_3     = ( 120,130 ) Elev = 25000 SPEED = 400
+          ( 100,100 ) Elev = 15000 Attack
+
+
+Fight_2   = ( 71,90 ) Elev = 15000 Speed = 550 Heading = 180
+
+Fight_3   = ( 73,91 ) Elev = 15000 Speed = 550 Heading = 350
+
+Fight_4   = ( 70,70 ) Elev = 5000 Speed = 300 Heading = 180 CAP
+
+[OBJECTS]
+
+; Your Carrier Battlegroup
+
+khawka        				PATH = Carrier_1
+                              Name = Home_A
+                              Side = Friendly
+
+; U.S. Aircraft
+
+F-14FDa                       PATH = Player
+                              Name = You
+                              Type = Player
+
+F-14FDa                       PATH = Player
+                              Name = Wingman
+                              Type = Wingman
+
+F-14FDa                       PATH = LAUNCH_1
+                              Number = 4,4,4,4
+
+F/A-18a						  PATH = LAUNCH_1
+							  Number = 2,2,2,2
+
+a-6ea						  PATH = LAUNCH_1
+							  Number = 4,4,4,4
+
+F-14FDa						  PATH = LAUNCH_1
+							  Number = 2,2,2,2
+
+F-14FDc			PATH = FCAP_3
+			Number = 2,2,2,2
+
+f-16a			PATH = Fight_4
+			Number = 2,2,2,2
+
+a-6Ea						  PATH = F_Flight6
+							  TYPE = READY_5
+							  Side = Friendly
+							  Number = 1,1,1,1
+
+F/A-18a						  PATH = Atk_2
+							  Number = 2,2,2,2
+
+a-6Ea						  PATH = F_Flight4
+	 						  Number = 1,1,1,1
+
+;
+; Soviet Aircraft
+
+Tu-95Da   Path = Atk_1
+		  Name = BEAR
+		  Side = Friendly
+          Number = 1,1,1,1
+
+[END]

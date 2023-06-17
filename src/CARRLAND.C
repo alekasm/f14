@@ -1,0 +1,57 @@
+[DESCRIPTION]
+Furball
+
+[WORLD]
+NorthCape
+
+[TIME]
+08:30
+
+[WEATHER]
+HighSky
+
+;[CIELING]
+;65000
+
+;[LOADOUT]
+;MCAlpha
+
+[BRIEFING]
+This is a test. For the next sixty seconds you will be
+testing whether or not a Furball can actual happen in FLEET
+DEFENDER.
+
+
+[PATHS]
+; Surface Ships
+
+Carrier_1      = ( 70,90 ) Speed = 30 Heading = 0
+
+
+;U.S. Aircraft Paths
+
+Player    = ( Home_A ) Elev = 1 SPEED = 0 HEADING = 0 Launch
+
+LAUNCH_1  = ( Home_A ) FORMATION = PARADE Launch
+			( 70,50 ) Elev = 10000 SPEED = 300
+
+
+[OBJECTS]
+
+; Your Carrier Battlegroup
+
+khawka        				PATH = Carrier_1
+                              Name = Home_A
+                              Side = Friendly
+
+; U.S. Aircraft
+
+F-14FDa                       PATH = Player
+                              Name = You
+                              Type = Player
+
+;F/A-18a                       PATH = Player
+;                              Name = Wingman
+;                              Type = Wingman
+
+[END]

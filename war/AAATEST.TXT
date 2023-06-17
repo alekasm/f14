@@ -1,0 +1,177 @@
+;
+; FIGHTING WITHDRAWAL #1 Box 1a Testing the Waters
+;
+
+[DESCRIPTION]
+T16Srch
+
+[WORLD]
+NorthCape
+
+[TIME]
+07:30
+
+[WEATHER]
+HighClouds
+
+[CEILING]
+35000
+
+[LOADOUT]
+MC_Alpha
+
+[BRIEFING]
+TESTING THE WATERS: Outstanding mission! Your success at stopping the surprise attack has
+cost the Soviets their best chance at destroying our carrier. Now, having been alerted to the
+danger we will be in a much better position to defend against such attacks in the future. The
+Soviets have also lost valuable time, time they can't afford to lose if they are to remain on
+schedule. Tu-16L "Badger" ELINT aircraft are patrolling at the outer edges of our radar
+coverage. They are trying to locate our carrier by detecting our transmissions. These
+electronic snoopers must be intercepted before they pinpoint our carrier.
+
+To win this mission you and your wingman must shoot down at least three (3) Tu-16L
+"Badgers"
+
+[STATIONS]
+
+station = Our_Carrier
+station = Their_Carrier
+
+[PATHS]
+
+; U.S Surface Ship Paths
+
+Carrier_1       = ( 65,45 ) Speed = 30 Heading = 250
+
+CGa_1		= ( 125,38 ) Speed = 0
+
+ENEMYCARR		= ( 145,80 ) Speed = 30 Heading = 130
+
+;  U.S. Aircraft Paths
+
+;Player	= ( Carrier ) Launch
+;Player 	= ( 125,45 ) Elev = 20000 Speed = 400 Heading = 0 TRAINING IMMORTALAI Harddeck = 5000
+Player 	= ( 125,45 ) Elev= 20000 Speed = 400 Heading = 0
+;Player 	= ( 65,150 ) Elev = 20000 Speed = 400 Heading = 180
+;		( ISTARGET )
+		  ( Bodo )
+			( Carrier ) Land
+
+Others2 	= ( 65,160 ) Elev = 20000 Speed = 400 Heading = 180
+		  ( 65,163 )
+		  ( 65,45 ) attack
+		  ( Carrier )
+
+Others 	= ( 125,45 ) Elev = 20000 Speed = 400 Heading = 0 DEFENSIVEBFM
+
+ENEMY 	= ( 125,45 ) Elev = 20000 Speed = 400 Heading = 0 OFFENSIVEBFM
+
+FLY1      = ( 125,44 ) Elev = 20000 Speed = 400 Heading = 0
+		  ( Bodo ) Land
+
+;FLY2      = ( Kiev ) Launch
+;		  ( 145,70 ) Elev = 5000 Speed = 400 Heading = 0
+;		  ( Kiev ) Land
+
+TROOPPATH	= ( 65,46 ) Elev = 1000 Speed = 200 Heading = 0
+		  ( Carrier )
+		  ( 65,35 ) Trooperdrop goal
+		  ( 65,34 ) Speed = 400
+		  ( Carrier ) Land
+
+CARRBOMB = ( 65,55 ) Elev = 8000 Speed = 300 Heading = 0 Formation = Strike
+		 ( 65,54 )
+		 ( Carrier ) gorillabomb
+		 ( Carrier ) gorillabomb
+		 ( Carrier ) Land
+
+[OBJECTS]
+; U.S. Surface Ships
+
+Nimitza                 PATH = Carrier_1
+                            	Name = Carrier
+                          	Side = Friendly
+			Station = Our_Carrier
+
+;CGa                     PATH = CGa_1
+;			Name = Cruiser
+;                        Side = Friendly
+;                        Number = 1,1,1,1
+;			Station = Our_Carrier
+;
+
+;SovCVHa		PATH = ENEMYCARR
+;			Name = Kiev
+;			Side = Enemy
+;			Number = 1, 1, 1, 1
+
+; U.S. Aircraft
+
+F-14FDa                   	PATH = Player
+                            	Name = You
+                            	Type = Player
+			Station = Our_Carrier
+
+;F/A-18a                   	PATH = Player
+;F-14FDa                   	PATH = Player
+;                            	Name = Wingman
+;                            	Type = Wingman
+;			Station = Our_Carrier
+;
+;F-5a			PATH = Others
+;			Side = FRIENDLY
+;			Number = 2, 2, 2, 2
+;
+;F-5a			PATH = ENEMY
+;			Side = ENEMY
+;			Number = 2, 2, 2, 2
+;
+;F-14FDa			PATH = Others2
+;Tu-95Ga			PATH = Others2
+;F-16a			PATH = ENEMY
+;			Name = ISTARGET
+;			Side = NEUTRAL
+;			Side = ENEMY
+;			Number = 2, 2, 2, 2
+;
+;F-14FDa			PATH = ENEMY
+;Tu-95Ga			PATH = ENEMY
+;F-16a			PATH = ENEMY
+;			Name = ISTARGET
+;			Side = NEUTRAL
+;			Side = ENEMY
+;			Number = 2, 2, 2, 2
+;
+;F-14FDa			PATH = Others
+;			Side = NEUTRAL
+;			Number = 2, 2, 2, 2
+;
+Tu-95Ga        PATH = FLY1
+			Side = ENEMY
+			Number = 1, 1, 1, 1
+
+;Mig-21a        PATH = FLY2
+;			Side = ENEMY
+;			Number = 4, 4, 4, 4
+
+;Mig-29a        PATH = FLY2
+;			Side = ENEMY
+;			Number = 4, 4, 4, 4
+
+;C-130a		PATH = TROOPPATH
+;			Side = FRIENDLY
+;			Number = 4, 4, 4, 4
+
+;A-6Eb		PATH = CARRBOMB
+;			Side = Friendly
+;			Side = Enemy
+;			Number = 4, 4, 4, 4
+
+[ground_targets]
+
+GT		Name = Bodo
+		Type = Airport
+		Side = Enemy
+		Location = ( 125,38 )
+
+[END]
